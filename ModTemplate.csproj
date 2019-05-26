@@ -107,21 +107,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseClientGameLogicComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseServerSessionComp.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseServerGameLogicComp.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseGameLogicComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseClientSessionComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\LogBaseEvent.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\LogBaseStatic.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\BufferedBinaryReader.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\Enums.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\Classes\FastQueue.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\FastQueue.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\Structs.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\ILog.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\IStaticLog.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Settings\Settings.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\ExampleSessionCore.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Logging\Log.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Networking\ChatHandler.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Networking\MessageBase.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Networking\Messages\ExampleMessage.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Logging\StaticLog.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Networking\Messaging.cs" />

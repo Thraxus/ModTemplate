@@ -1,6 +1,7 @@
 ﻿namespace ModTemplate.Namespace.Common.DataTypes
 {
-	class Enums
+	public enum LogType
 	{
+		Debug, Exception, General, Profiling
 	}
 }
