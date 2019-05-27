@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="protobuf-net">
+      <HintPath>E:\SteamLibrary\steamapps\common\SpaceEngineers\Bin64\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="Sandbox.Common">
       <HintPath>E:\SteamLibrary\steamapps\common\SpaceEngineers\Bin64\Sandbox.Common.dll</HintPath>
     </Reference>

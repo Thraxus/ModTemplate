@@ -2,9 +2,11 @@
 using ModTemplate.Namespace.Common.DataTypes;
 using Sandbox.ModAPI;
 using VRage.Game;
+using VRage.Game.Components;
 
 namespace ModTemplate.Namespace
 {
+	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation, priority: int.MinValue + 1)]
 	class ExampleSessionCore : BaseServerSessionComp
 	{
 		private const string GeneralLogName = "CoreGeneral";
