@@ -120,17 +120,17 @@
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\Structs.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Settings\Settings.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\ExampleSessionCore.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Logging\Log.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Networking\ChatHandler.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Networking\MessageBase.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Networking\Messages\ExampleMessage.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Logging\StaticLog.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Networking\Messaging.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Utilities\Tools\Profiler.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\Log.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\ChatHandler.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\MessageBase.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\Messages\ExampleMessage.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\StaticLog.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\Messaging.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Profiler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mod-ModID\Data\Scripts\Namespace\Utilities\StaticMethods\" />
+    <Folder Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\StaticMethods\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

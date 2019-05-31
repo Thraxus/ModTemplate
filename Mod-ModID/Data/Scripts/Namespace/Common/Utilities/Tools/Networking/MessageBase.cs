@@ -1,8 +1,8 @@
-﻿using ModTemplate.Namespace.Utilities.Networking.Messages;
+﻿using ModTemplate.Namespace.Common.Utilities.Tools.Networking.Messages;
 using ProtoBuf;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Namespace.Utilities.Networking
+namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 {
 	[ProtoInclude(10, typeof(ExampleMessage))]
 	[ProtoContract]

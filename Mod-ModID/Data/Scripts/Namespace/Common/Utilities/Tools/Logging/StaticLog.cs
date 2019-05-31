@@ -1,18 +1,17 @@
 ﻿using ModTemplate.Namespace.Common.DataTypes;
-using ModTemplate.Namespace.Common.Settings;
 using VRage.Game;
 using VRage.Game.Components;
 
-namespace ModTemplate.Namespace.Utilities.Logging
+namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.NoUpdate, priority: int.MinValue)]
 	// ReSharper disable once ClassNeverInstantiated.Global
 	internal class StaticLog : MySessionComponentBase
 	{
-		private const string DebugLogName = Settings.StaticDebugLogName;
-		private const string ExceptionLogName = Settings.ExceptionLogName;
-		private const string GeneralLogName = Settings.StaticGeneralLogName;
-		private const string ProfilingLogName = Settings.ProflingLogName;
+		private const string DebugLogName = Settings.Settings.StaticDebugLogName;
+		private const string ExceptionLogName = Settings.Settings.ExceptionLogName;
+		private const string GeneralLogName = Settings.Settings.StaticGeneralLogName;
+		private const string ProfilingLogName = Settings.Settings.ProflingLogName;
 
 		private static Log _debugLog;
 		private static Log _exceptionLog;
@@ -28,10 +27,10 @@ namespace ModTemplate.Namespace.Utilities.Logging
 		public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
 		{
 			base.Init(sessionComponent);
-			if (Settings.DebugMode) _debugLog = new Log(DebugLogName);
+			if (Settings.Settings.DebugMode) _debugLog = new Log(DebugLogName);
 			_exceptionLog = new Log(ExceptionLogName);
 			_generalLog = new Log(GeneralLogName);
-			if (Settings.ProfilingEnabled) _profilingLog = new Log(ProfilingLogName);
+			if (Settings.Settings.ProfilingEnabled) _profilingLog = new Log(ProfilingLogName);
 			WriteToLog("StaticLogger", "Static logs loaded.", LogType.General);
 		}
 

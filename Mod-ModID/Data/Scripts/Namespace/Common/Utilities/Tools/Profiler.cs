@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using ModTemplate.Namespace.Common.DataTypes;
-using ModTemplate.Namespace.Common.Settings;
-using ModTemplate.Namespace.Utilities.Logging;
+using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
 
-namespace ModTemplate.Namespace.Utilities.Tools
+namespace ModTemplate.Namespace.Common.Utilities.Tools
 {
 	/// <inheritdoc cref="Profiler" />
 	/// <summary>
@@ -31,7 +30,7 @@ namespace ModTemplate.Namespace.Utilities.Tools
 		{
 			long end = Stopwatch.GetTimestamp();
 			TimeSpan timespan = new TimeSpan(end - _start);
-			if(Settings.ProfilingEnabled)
+			if(Settings.Settings.ProfilingEnabled)
 				StaticLog.WriteToLog(_name, $"{timespan.TotalMilliseconds:0.##########}ms", LogType.Profiling);
 		}
 	}

@@ -1,5 +1,5 @@
 ﻿using ModTemplate.Namespace.Common.DataTypes;
-using ModTemplate.Namespace.Utilities.Logging;
+using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
 using VRage.Game.Components;
 
 namespace ModTemplate.Namespace.Common.BaseClasses

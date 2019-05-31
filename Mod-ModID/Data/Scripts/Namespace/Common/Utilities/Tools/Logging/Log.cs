@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using ModTemplate.Namespace.Common.DataTypes;
-using ModTemplate.Namespace.Common.Settings;
-using ModTemplate.Namespace.Utilities.Networking;
+using ModTemplate.Namespace.Common.Utilities.Tools.Networking;
 using Sandbox.ModAPI;
 using VRage.Game;
 
-namespace ModTemplate.Namespace.Utilities.Logging
+namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 {
 	public class Log
 	{
@@ -42,7 +40,7 @@ namespace ModTemplate.Namespace.Utilities.Logging
 			TextWriter = null;
 		}
 
-		public void WriteToLog(string caller, string message, bool showOnHud = false, int duration = Settings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
+		public void WriteToLog(string caller, string message, bool showOnHud = false, int duration = Settings.Settings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
 		{
 			BuildLogLine(caller, message);
 			if (!showOnHud) return;
