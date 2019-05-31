@@ -135,10 +135,10 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 				StaticLog.WriteToLog(caller, message, LogType.Profiling);
 			}
 		}
-		
-		public static void WriteToStaticLog(string caller, string message)
+
+		public static void WriteToStaticLog(string caller, string message, LogType logType)
 		{
-			StaticLog.WriteToLog(caller, message, LogType.General);
+			StaticLog.WriteToLog(caller, message, logType);
 		}
 	}
 }
