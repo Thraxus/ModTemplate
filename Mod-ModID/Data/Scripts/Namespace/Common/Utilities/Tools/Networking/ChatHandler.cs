@@ -51,7 +51,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 		private static void PrintHelpCommands(string s)
 		{
 			Messaging.ShowLocalNotification($"'{ChatCommandPrefix} {HelpPrefix}' will show this message");
-			Messaging.ShowLocalNotification($"'SomeOtherPrefix This is an exmaple of a second message");
+			Messaging.ShowLocalNotification($"'SomeOtherPrefix This is an example of a second message");
 		}
 	}
 }
