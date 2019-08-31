@@ -1,6 +1,6 @@
 ﻿namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking.Messages
 {
-	class ExampleMessage
+	internal class ExampleMessage
 	{
 
 	}

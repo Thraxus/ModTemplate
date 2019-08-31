@@ -7,7 +7,7 @@ using VRage.Game.Components;
 namespace ModTemplate.Namespace
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation, priority: int.MinValue + 1)]
-	class ExampleSessionCore : BaseServerSessionComp
+	internal class ExampleSessionCore : BaseServerSessionComp
 	{
 		private const string GeneralLogName = "CoreGeneral";
 		private const string DebugLogName = "CoreDebug";

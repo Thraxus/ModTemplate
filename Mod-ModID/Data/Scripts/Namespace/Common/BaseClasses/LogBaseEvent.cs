@@ -2,7 +2,7 @@
 
 namespace ModTemplate.Namespace.Common.BaseClasses
 {
-	abstract class LogBaseEvent
+	internal abstract class LogBaseEvent
 	{
 		public event TriggerLog OnWriteToLog;
 		public delegate void TriggerLog(string caller, string message, LogType logType);

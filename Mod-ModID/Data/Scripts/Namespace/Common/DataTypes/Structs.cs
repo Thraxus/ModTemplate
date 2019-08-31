@@ -1,6 +1,6 @@
 ﻿namespace ModTemplate.Namespace.Common.DataTypes
 {
-	class Structs
+	internal class Structs
 	{
 	}
 }

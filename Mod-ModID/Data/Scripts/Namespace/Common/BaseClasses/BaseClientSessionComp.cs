@@ -6,7 +6,7 @@ using VRage.Game.Components;
 
 namespace ModTemplate.Namespace.Common.BaseClasses
 {
-	class BaseClientSessionComp : MySessionComponentBase
+	internal class BaseClientSessionComp : MySessionComponentBase
 	{
 		private readonly string _baseGeneralLogName;
 		private readonly string _baseDebugLogName;

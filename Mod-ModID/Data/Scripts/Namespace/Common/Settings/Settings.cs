@@ -3,7 +3,7 @@ using Sandbox.ModAPI;
 
 namespace ModTemplate.Namespace.Common.Settings
 {
-	static class Settings
+	internal static class Settings
 	{
 
 		#region Constant Values

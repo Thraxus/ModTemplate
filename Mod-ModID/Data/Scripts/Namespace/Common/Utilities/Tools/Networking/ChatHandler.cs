@@ -5,7 +5,7 @@ using VRage.Game.ModAPI;
 
 namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 {
-	class ChatHandler
+	internal class ChatHandler
 	{
 		internal const string ChatCommandPrefix = Settings.Settings.ChatCommandPrefix;
 		private const string HelpPrefix = "help";
