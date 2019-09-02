@@ -143,10 +143,10 @@
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Settings\Settings.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\SaveGame\Load.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\SaveGame\Save.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\SaveGame\SaveData.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\StaticMethods\StaticMethods.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\LoadConfigurationFile.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\SaveConfigurationFile.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\UserConfiguration.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\ExampleSessionCore.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\Log.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\ChatHandler.cs" />

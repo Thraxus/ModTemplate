@@ -8,21 +8,24 @@ namespace ModTemplate.Namespace.Common.Utilities.SaveGame
 {
 	internal static class SaveToFile
 	{
-		private const string SaveFileName = "save.eem";
-
-		private static void SaveFile(Type saveData)
+		public static void WriteToFile<T>(string fileName, T data, Type type)
 		{
-			if (MyAPIGateway.Utilities.FileExistsInLocalStorage(SaveFileName, typeof(SaveData)))
-				MyAPIGateway.Utilities.DeleteFileInLocalStorage(SaveFileName, typeof(SaveData));
+			if (MyAPIGateway.Utilities.FileExistsInWorldStorage(fileName, type))
+				MyAPIGateway.Utilities.DeleteFileInWorldStorage(fileName, type);
 
-			byte[] save = MyAPIGateway.Utilities.SerializeToBinary(saveData);
-
-			using (BinaryWriter binaryWriter = MyAPIGateway.Utilities.WriteBinaryFileInLocalStorage(SaveFileName, typeof(SaveData)))
+			using (BinaryWriter binaryWriter = MyAPIGateway.Utilities.WriteBinaryFileInWorldStorage(fileName, type))
 			{
 				if (binaryWriter == null)
 					return;
-				binaryWriter.Write(save);
+				byte[] binary = MyAPIGateway.Utilities.SerializeToBinary(data);
+				binaryWriter.Write(binary.Length);
+				binaryWriter.Write(binary);
 			}
+		}
+
+		public static void WriteToSandbox<T>(string fileName, T data, Type type)
+		{
+
 		}
 	}
 }
