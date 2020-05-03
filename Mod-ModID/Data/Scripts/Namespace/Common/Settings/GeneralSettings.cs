@@ -1,25 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
 using Sandbox.ModAPI;
 
 namespace ModTemplate.Namespace.Common.Settings
 {
-	internal static class Settings
+	public static class GeneralSettings
 	{
+		public const string ConfigFileName = "MyCustomConfig.xml";
+		public const string SaveFileName = "MyCustomSave.file";
+		public const string SandboxVariableName = "MyCustomSandboxVariableName";
+
+		#region User Configuration
+
+		public const bool DebugMode = false;
+		public const bool ProfilingEnabled = false;
+
+		#endregion
 
 		#region Constant Values
 
 		public const bool ForcedDebugMode = false;
 
 		public const string ChatCommandPrefix = "chatCommand";
-		public const string SettingsFileName = "ModName-UserConfig.xml";
 		public const string StaticDebugLogName = "StaticLog-Debug";
 		public const string ExceptionLogName = "Exception";
 		public const string StaticGeneralLogName = "StaticLog-General";
-		public const string ProflingLogName = "Profiler";
+		public const string ProfilingLogName = "Profiler";
 
-		public const ushort NetworkId = 12345;
+		public const ushort NetworkId = 16759;
 		
 		#endregion
+
 
 		#region Reference Values
 
@@ -31,15 +42,6 @@ namespace ModTemplate.Namespace.Common.Settings
 		public const int TicksPerSecond = 60;
 
 		public static Random Random { get; } = new Random();
-
-		#endregion
-
-
-		#region User Configuration
-
-		public static bool DebugMode = false;
-		public static bool ProfilingEnabled = false;
-
 
 		#endregion
 	}

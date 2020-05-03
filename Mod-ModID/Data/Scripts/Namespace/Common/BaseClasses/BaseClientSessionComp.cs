@@ -6,7 +6,7 @@ using VRage.Game.Components;
 
 namespace ModTemplate.Namespace.Common.BaseClasses
 {
-	internal class BaseClientSessionComp : MySessionComponentBase
+	class BaseClientSessionComp : MySessionComponentBase
 	{
 		private readonly string _baseGeneralLogName;
 		private readonly string _baseDebugLogName;
@@ -30,13 +30,13 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 
 		public override void BeforeStart()
 		{
-			if (Settings.Settings.IsServer) return;
+			if (Settings.GeneralSettings.IsServer) return;
 			base.BeforeStart();
 		}
 
 		public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
 		{
-			if (Settings.Settings.IsServer) return;
+			if (Settings.GeneralSettings.IsServer) return;
 			base.Init(sessionComponent);
 			if (!_earlySetupComplete) EarlySetup();
 		}
@@ -45,20 +45,20 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 		{
 			_earlySetupComplete = true;
 			_generalLog = new Log(_baseGeneralLogName);
-			if (Settings.Settings.DebugMode) _debugLog = new Log(_baseDebugLogName);
+			if (Settings.GeneralSettings.DebugMode) _debugLog = new Log(_baseDebugLogName);
 			WriteToLog("EarlySetup", $"Waking up.", LogType.General);
 		}
 
 		public override void UpdateBeforeSimulation()
 		{
-			if (Settings.Settings.IsServer) return;
+			if (Settings.GeneralSettings.IsServer) return;
 			base.UpdateBeforeSimulation();
 			if (!_lateSetupComplete) LateSetup();
 		}
 
 		public override void UpdateAfterSimulation()
 		{
-			if (Settings.Settings.IsServer) return;
+			if (Settings.GeneralSettings.IsServer) return;
 			base.UpdateAfterSimulation();
 		}
 
@@ -77,7 +77,7 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 
 		protected virtual void Unload()
 		{
-			if (Settings.Settings.IsServer) return;
+			if (Settings.GeneralSettings.IsServer) return;
 			WriteToLog("Unload", $"Retired.", LogType.General);
 			_debugLog?.Close();
 			_generalLog?.Close();

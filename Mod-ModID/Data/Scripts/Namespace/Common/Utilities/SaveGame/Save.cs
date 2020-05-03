@@ -1,12 +1,10 @@
 ﻿using System;
 using System.IO;
 using Sandbox.ModAPI;
-using VRage;
-using VRage.Utils;
 
 namespace ModTemplate.Namespace.Common.Utilities.SaveGame
 {
-	internal static class SaveToFile
+	public static class Save
 	{
 		public static void WriteToFile<T>(string fileName, T data, Type type)
 		{
@@ -23,7 +21,7 @@ namespace ModTemplate.Namespace.Common.Utilities.SaveGame
 			}
 		}
 
-		public static void WriteToSandbox<T>(string fileName, T data, Type type)
+		public static void WriteToSandbox(Type T)
 		{
 
 		}

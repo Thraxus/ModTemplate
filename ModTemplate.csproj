@@ -30,6 +30,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -140,12 +160,14 @@
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\Enums.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\FastQueue.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\Structs.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Settings\Settings.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Settings\GeneralSettings.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\SaveGame\Load.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\SaveGame\Save.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\StaticMethods\StaticMethods.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\LoadConfigurationFile.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\SaveConfigurationFile.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Statics\Statics.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\OnScreenDisplay\QuestlogDetail.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\OnScreenDisplay\QuestScreen.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\Load.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\SaveConfig.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\UserConfiguration.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\ExampleSessionCore.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\Log.cs" />

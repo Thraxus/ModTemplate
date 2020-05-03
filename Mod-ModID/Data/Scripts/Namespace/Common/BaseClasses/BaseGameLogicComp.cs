@@ -8,6 +8,7 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 	{
 		protected string EntityName = "PlaceholderName";
 		protected long EntityId = 0L;
+		protected long Ticks;
 
 		public void WriteToLog(string caller, string message, LogType logType)
 		{
@@ -26,6 +27,15 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 					return;
 			}
 		}
+
+		public override void UpdateBeforeSimulation()
+		{
+			Ticks++;
+			TickTimer();
+			base.UpdateBeforeSimulation();
+		}
+
+		protected abstract void TickTimer();
 
 		private void GeneralLog(string caller, string message)
 		{

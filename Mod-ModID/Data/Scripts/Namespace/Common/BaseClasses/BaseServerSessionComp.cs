@@ -10,9 +10,11 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 	{
 		private readonly string _baseGeneralLogName;
 		private readonly string _baseDebugLogName;
-		private readonly string _baseType;
+		private readonly string _sessionCompName;
 
 		private readonly bool _noUpdate;
+
+		internal long TickCounter;
 
 		private Log _generalLog;
 		private Log _debugLog;
@@ -21,18 +23,18 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 		private bool _earlySetupComplete;
 		private bool _lateSetupComplete;
 
-		protected BaseServerSessionComp(string generalLogName, string debugLogName, string baseType, bool noUpdate = true)
+		protected BaseServerSessionComp(string generalLogName, string debugLogName, string sessionCompName, bool noUpdate = true)
 		{
 			_baseGeneralLogName = generalLogName;
 			_baseDebugLogName = debugLogName;
-			_baseType = baseType;
+			_sessionCompName = sessionCompName;
 			_noUpdate = noUpdate;
 		}
 
 		/// <inheritdoc />
 		public override void LoadData()
 		{
-			if (!Settings.Settings.IsServer) return;
+			if (!Settings.GeneralSettings.IsServer) return;
 			base.LoadData();
 			if (!_superEarlySetupComplete) SuperEarlySetup();
 		}
@@ -53,18 +55,18 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 		{
 			_superEarlySetupComplete = true;
 			_generalLog = new Log(_baseGeneralLogName);
-			if (Settings.Settings.DebugMode) _debugLog = new Log(_baseDebugLogName);
+			if (Settings.GeneralSettings.DebugMode) _debugLog = new Log(_baseDebugLogName);
 		}
 
 		public override void BeforeStart()
 		{
-			if (!Settings.Settings.IsServer) return;
+			if (!Settings.GeneralSettings.IsServer) return;
 			base.BeforeStart();
 		}
 
 		public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
 		{
-			if (!Settings.Settings.IsServer) return;
+			if (!Settings.GeneralSettings.IsServer) return;
 			base.Init(sessionComponent);
 			if (!_earlySetupComplete) EarlySetup();
 		}
@@ -77,9 +79,15 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 
 		public override void UpdateBeforeSimulation()
 		{
-			if (!Settings.Settings.IsServer) return;
+			if (!Settings.GeneralSettings.IsServer) return;
 			base.UpdateBeforeSimulation();
 			if (!_lateSetupComplete) LateSetup();
+			RunBeforeSimUpdate();
+		}
+
+		protected virtual void RunBeforeSimUpdate()
+		{
+			TickCounter++;
 		}
 
 		protected virtual void LateSetup()
@@ -92,7 +100,7 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 
 		public override void UpdateAfterSimulation()
 		{
-			if (!Settings.Settings.IsServer) return;
+			if (!Settings.GeneralSettings.IsServer) return;
 			base.UpdateAfterSimulation();
 		}
 
@@ -104,7 +112,7 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 
 		protected virtual void Unload()
 		{
-			if (!Settings.Settings.IsServer) return;
+			if (!Settings.GeneralSettings.IsServer) return;
 			WriteToLog("Unload", $"Retired.", LogType.General);
 			_debugLog?.Close();
 			_generalLog?.Close();
@@ -138,20 +146,20 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 		{
 			lock (_writeLocker)
 			{
-				_debugLog?.WriteToLog($"{_baseType}: {caller}", message);
+				_debugLog?.WriteToLog($"{_sessionCompName}: {caller}", message);
 			}
 		}
 
 		private void WriteException(string caller, string message)
 		{
-			StaticLog.WriteToLog($"{_baseType}: {caller}", $"Exception! {message}", LogType.Exception);
+			StaticLog.WriteToLog($"{_sessionCompName}: {caller}", $"Exception! {message}", LogType.Exception);
 		}
 
 		private void WriteGeneral(string caller, string message)
 		{
 			lock (_writeLocker)
 			{
-				_generalLog?.WriteToLog($"{_baseType}: {caller}", message);
+				_generalLog?.WriteToLog($"{_sessionCompName}: {caller}", message);
 			}
 		}
 

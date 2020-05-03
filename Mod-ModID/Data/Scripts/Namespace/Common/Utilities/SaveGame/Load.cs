@@ -4,7 +4,7 @@ using Sandbox.ModAPI;
 
 namespace ModTemplate.Namespace.Common.Utilities.SaveGame
 {
-	internal class Load
+	internal static class Load
 	{
 		public static T ReadFromFile<T>(string fileName, Type type)
 		{
@@ -16,11 +16,5 @@ namespace ModTemplate.Namespace.Common.Utilities.SaveGame
 				return MyAPIGateway.Utilities.SerializeFromBinary<T>(binaryReader.ReadBytes(binaryReader.ReadInt32()));
 			}
 		}
-
-		public static T ReadFromSandbox<T>(string fileName, Type type)
-		{
-			return default(T);
-		}
-
 	}
 }
