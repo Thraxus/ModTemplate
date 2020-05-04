@@ -273,6 +273,16 @@ namespace ModTemplate.Namespace.Common.Utilities.Statics
 			return (leftFaction == null || rightFaction == null);
 		}
 
+		/// <summary>
+		/// Utility method. Checks whether an identity is a bot or not
+		/// </summary>
+		/// <param name="identityId"></param>
+		/// <returns>Returns true if the identity is not a bot</returns>
+		public static bool ValidPlayer(long identityId)
+		{
+			return MyAPIGateway.Players.TryGetSteamId(identityId) != 0;
+		}
+
 		#region Debug methods - should not be used in production code
 
 		public static void PrintTerminalActions(IMyEntity block)
