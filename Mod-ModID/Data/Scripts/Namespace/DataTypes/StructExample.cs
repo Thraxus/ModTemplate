@@ -1,7 +1,4 @@
-﻿using System;
-using VRage.Game.ModAPI;
-
-namespace ModTemplate.Namespace.Common.Models
+﻿namespace ModTemplate.Namespace.DataTypes
 {
 	public struct StructExample
 	{
