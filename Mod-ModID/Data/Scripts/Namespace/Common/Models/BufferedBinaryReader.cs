@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ModTemplate.Namespace.Common.DataTypes
+namespace ModTemplate.Namespace.Common.Models
 {
 	public class BufferedBinaryReader : IDisposable
 	{

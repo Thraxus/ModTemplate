@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
-using ModTemplate.Namespace.Common.DataTypes;
+using ModTemplate.Namespace.Common.Models;
 using ModTemplate.Namespace.Common.Utilities.Tools.Networking;
+using ModTemplate.Namespace.Settings;
 using Sandbox.ModAPI;
 using VRage.Game;
 
@@ -40,7 +41,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 			TextWriter = null;
 		}
 
-		public void WriteToLog(string caller, string message, bool showOnHud = false, int duration = Settings.GeneralSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
+		public void WriteToLog(string caller, string message, bool showOnHud = false, int duration = ModSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
 		{
 			BuildLogLine(caller, message);
 			if (!showOnHud) return;

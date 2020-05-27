@@ -1,4 +1,4 @@
-﻿using ModTemplate.Namespace.Common.DataTypes;
+﻿using ModTemplate.Namespace.Common.Enums;
 using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
 using VRage.Game.Components;
 
@@ -16,9 +16,6 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 			{
 				case LogType.General:
 					GeneralLog(caller, message);
-					return;
-				case LogType.Debug:
-					DebugLog(caller, message);
 					return;
 				case LogType.Exception:
 					ExceptionLog(caller, message);
@@ -40,11 +37,6 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 		private void GeneralLog(string caller, string message)
 		{
 			StaticLog.WriteToLog($"{EntityName} ({EntityId}): {caller}", message, LogType.General);
-		}
-
-		private void DebugLog(string caller, string message)
-		{
-			StaticLog.WriteToLog($"{EntityName} ({EntityId}): {caller}", message, LogType.Debug);
 		}
 
 		private void ExceptionLog(string caller, string message)

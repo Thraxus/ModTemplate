@@ -155,20 +155,21 @@
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseServerSessionComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseGameLogicComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseClientSessionComp.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseSessionComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\LogBaseEvent.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\BufferedBinaryReader.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\Enums.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\FastQueue.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\DataTypes\Structs.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Settings\GeneralSettings.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\SaveGame\Load.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\SaveGame\Save.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\DataTypes\Enums\ExampleEnum.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\LogType.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\SessionCompType.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\BufferedBinaryReader.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\FactionRelationship.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\DataTypes\ClassExample.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\FastQueue.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\StructExample.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\FileHandlers\Load.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\FileHandlers\Save.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Statics\Statics.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\OnScreenDisplay\QuestlogDetail.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\OnScreenDisplay\QuestScreen.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\Load.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\SaveConfig.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\UserConfiguration\UserConfiguration.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\ExampleSessionCore.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\Log.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\ChatHandler.cs" />
@@ -177,8 +178,18 @@
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\StaticLog.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\Messaging.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Profiler.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Models\ExampleModelWithEventLog.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Settings\ModSettings.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Settings\MyCustomIni\ConfigConstants.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Settings\MyCustomIni\ExportDefaultUserSettings.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Settings\MyCustomIni\ImportCustomUserSettings.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Settings\MyCustomIni\IniSupport.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Settings\UserSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Mod-ModID\Data\Scripts\Namespace\Settings\MyCustomXmlToDo\" />
+    <Folder Include="Mod-ModID\Data\Scripts\Namespace\Utility\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

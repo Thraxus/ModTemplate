@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ModTemplate.Namespace.Settings;
 using Sandbox.Game;
 using Sandbox.ModAPI;
 using VRage.Game;
@@ -13,13 +14,13 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 
 		public static void Register()
 		{
-			MyAPIGateway.Multiplayer.RegisterMessageHandler(Settings.GeneralSettings.NetworkId, MessageHandler);
+			MyAPIGateway.Multiplayer.RegisterMessageHandler(ModSettings.NetworkId, MessageHandler);
 			MyAPIGateway.Utilities.MessageEntered += ChatMessageHandler;
 		}
 
 		public static void UnRegister()
 		{
-			MyAPIGateway.Multiplayer.UnregisterMessageHandler(Settings.GeneralSettings.NetworkId, MessageHandler);
+			MyAPIGateway.Multiplayer.UnregisterMessageHandler(ModSettings.NetworkId, MessageHandler);
 			lock (_playerCache)
 			{
 				_playerCache = null;
@@ -30,7 +31,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 		private static void MessageHandler(byte[] bytes)
 		{
 			MessageBase m = MyAPIGateway.Utilities.SerializeFromBinary<MessageBase>(bytes);
-			if (Settings.GeneralSettings.IsServer)
+			if (ModSettings.IsServer)
 				m.HandleServer();
 			else
 				m.HandleClient();
@@ -53,7 +54,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 			byte[] d = MyAPIGateway.Utilities.SerializeToBinary(message);
 			if (!reliable && d.Length >= 1000)
 				throw new Exception($"Attempting to send unreliable message beyond message size limits! Message type: {message.GetType()} Content: {string.Join(" ", d)}");
-			MyAPIGateway.Multiplayer.SendMessageTo(Settings.GeneralSettings.NetworkId, d, steamId, reliable);
+			MyAPIGateway.Multiplayer.SendMessageTo(ModSettings.NetworkId, d, steamId, reliable);
 		}
 
 		public static void SendMessageToServer(MessageBase message, bool reliable = true)
@@ -61,7 +62,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 			byte[] d = MyAPIGateway.Utilities.SerializeToBinary(message);
 			if (!reliable && d.Length >= 1000)
 				throw new Exception($"Attempting to send unreliable message beyond message size limits! Message type: {message.GetType()} Content: {string.Join(" ", d)}");
-			MyAPIGateway.Multiplayer.SendMessageToServer(Settings.GeneralSettings.NetworkId, d, reliable);
+			MyAPIGateway.Multiplayer.SendMessageToServer(ModSettings.NetworkId, d, reliable);
 		}
 
 		public static void SendMessageToClients(MessageBase message, bool reliable = true, params ulong[] ignore)
@@ -78,7 +79,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 					ulong steamId = player.SteamUserId;
 					if (ignore?.Contains(steamId) == true)
 						continue;
-					MyAPIGateway.Multiplayer.SendMessageTo(Settings.GeneralSettings.NetworkId, d, steamId, reliable);
+					MyAPIGateway.Multiplayer.SendMessageTo(ModSettings.NetworkId, d, steamId, reliable);
 				}
 				_playerCache.Clear();
 			}
@@ -90,7 +91,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 		/// <param name="message">The message to send</param>
 		/// <param name="duration">Optional. How long to display the message for</param>
 		/// <param name="color">Optional.  Color of the sender's name in chat - remember to check it against MyFontEnum else, errors</param>
-		public static void ShowLocalNotification(string message, int duration = Settings.GeneralSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
+		public static void ShowLocalNotification(string message, int duration = ModSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
 		{
 			MyVisualScriptLogicProvider.ShowNotification(message, duration, color);
 		}
@@ -101,7 +102,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 		/// <param name="message">Message to send</param>
 		/// <param name="duration">Optional. How long to display the message for</param>
 		/// <param name="color">Optional. Color to send the message in</param>
-		public static void SendMessageToServer(string message, int duration = Settings.GeneralSettings.DefaultServerMessageDisplayTime, string color = MyFontEnum.Red)
+		public static void SendMessageToServer(string message, int duration = ModSettings.DefaultServerMessageDisplayTime, string color = MyFontEnum.Red)
 		{
 			MyVisualScriptLogicProvider.ShowNotificationToAll(message, duration, color);
 		}

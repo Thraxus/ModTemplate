@@ -1,36 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Namespace.Common.Settings
+namespace ModTemplate.Namespace.Settings
 {
-	public static class GeneralSettings
-	{
-		public const string ConfigFileName = "MyCustomConfig.xml";
+	public static class ModSettings
+	{	// These settings should be used by the mod directly, and not changeable by a user.  They are considered "reference only"
+
+		public const string MyIniFileName = "MyCustomIniName.ini";
 		public const string SaveFileName = "MyCustomSave.file";
 		public const string SandboxVariableName = "MyCustomSandboxVariableName";
 
-		#region User Configuration
-
-		public const bool DebugMode = false;
-		public const bool ProfilingEnabled = false;
-
-		#endregion
-
-		#region Constant Values
-
-		public const bool ForcedDebugMode = false;
-
 		public const string ChatCommandPrefix = "chatCommand";
-		public const string StaticDebugLogName = "StaticLog-Debug";
 		public const string ExceptionLogName = "Exception";
 		public const string StaticGeneralLogName = "StaticLog-General";
-		public const string ProfilingLogName = "Profiler";
-
 		public const ushort NetworkId = 16759;
-		
-		#endregion
-
 
 		#region Reference Values
 
@@ -38,8 +25,8 @@ namespace ModTemplate.Namespace.Common.Settings
 
 		public const int DefaultLocalMessageDisplayTime = 5000;
 		public const int DefaultServerMessageDisplayTime = 10000;
-		public const int TicksPerMinute = TicksPerSecond * 60;
 		public const int TicksPerSecond = 60;
+		public const int TicksPerMinute = TicksPerSecond * 60;
 
 		public static Random Random { get; } = new Random();
 

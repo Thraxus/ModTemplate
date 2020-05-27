@@ -1,5 +1,6 @@
 ﻿using ModTemplate.Namespace.Common.BaseClasses;
-using ModTemplate.Namespace.Common.DataTypes;
+using ModTemplate.Namespace.Common.Enums;
+using ModTemplate.Namespace.Models;
 using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
@@ -9,11 +10,12 @@ namespace ModTemplate.Namespace
 	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation, priority: int.MinValue + 1)]
 	internal class ExampleSessionCore : BaseServerSessionComp
 	{
-		private const string GeneralLogName = "CoreGeneral";
-		private const string DebugLogName = "CoreDebug";
 		private const string SessionCompName = "Core";
 
-		public ExampleSessionCore() : base(GeneralLogName, DebugLogName, SessionCompName) { } // Do nothing else
+		public ExampleSessionCore() : base(SessionCompName) { } // Do nothing else
+
+		// Example of how to use the event driven log (used for classes to write in their owners log)
+		private ExampleModelWithEventLog _example;
 
 		/// <inheritdoc />
 		protected override void EarlySetup()
@@ -35,11 +37,17 @@ namespace ModTemplate.Namespace
 			WriteToLog("LateSetup", $"TotalPCU: {MyAPIGateway.Session.SessionSettings.TotalPCU}", LogType.General);
 			foreach (MyObjectBuilder_Checkpoint.ModItem mod in MyAPIGateway.Session.Mods)
 				WriteToLog("LateSetup", $"Mod: {mod}", LogType.General);
+
+
+			_example = new ExampleModelWithEventLog();
+			_example.OnWriteToLog += WriteToLog;
+			_example.ExampleOfClassWritingToOwnersLog();
 		}
 
 		/// <inheritdoc />
 		protected override void Unload()
 		{
+			_example.OnWriteToLog -= WriteToLog;
 			base.Unload();
 		}
 	}

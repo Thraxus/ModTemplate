@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using ModTemplate.Namespace.Common.DataTypes;
+using ModTemplate.Namespace.Common.Enums;
 using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
 
 namespace ModTemplate.Namespace.Common.Utilities.Tools
@@ -30,8 +30,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools
 		{
 			long end = Stopwatch.GetTimestamp();
 			TimeSpan timespan = new TimeSpan(end - _start);
-			if(Settings.GeneralSettings.ProfilingEnabled)
-				StaticLog.WriteToLog(_name, $"{timespan.TotalMilliseconds:0.##########}ms", LogType.Profiling);
+			StaticLog.WriteToLog(_name, $"{timespan.TotalMilliseconds:0.##########}ms", LogType.General);
 		}
 	}
 }

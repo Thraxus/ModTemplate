@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModTemplate.Namespace.Common.DataTypes;
+using ModTemplate.Namespace.Common.Enums;
 using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
 using Sandbox.Game;
 using Sandbox.Game.Entities;
@@ -22,8 +22,6 @@ namespace ModTemplate.Namespace.Common.Utilities.Statics
 {
 	public static class Statics
 	{
-		public static long GlobalTicks => MyAPIGateway.Session.ElapsedPlayTime.Ticks;
-
 		public static IEnumerable<MyEntity> DetectDynamicEntitiesInSphere(Vector3D detectionCenter, double range, bool reportOrigin = false)
 		{
 			if (reportOrigin) AddGpsLocation($"DetectDynamicEntitiesInSphere {range}", detectionCenter);
@@ -64,16 +62,21 @@ namespace ModTemplate.Namespace.Common.Utilities.Statics
 			return pruneList;
 		}
 
+		// This is broken as fuck
 		public static IEnumerable<MyEntity> DetectPlayersInSphere(Vector3D detectionCenter, double range, bool reportOrigin = false)
 		{
 			if (reportOrigin) AddGpsLocation($"DetectPlayersInSphere {range}", detectionCenter);
 
 			BoundingSphereD pruneSphere = new BoundingSphereD(detectionCenter, range);
 			List<MyEntity> pruneList = new List<MyEntity>();
-			MyGamePruningStructure.GetAllEntitiesInSphere(ref pruneSphere, pruneList, MyEntityQueryType.Dynamic);
+			MyGamePruningStructure.GetAllTopMostEntitiesInSphere(ref pruneSphere, pruneList);
 			List<IMyPlayer> players = new List<IMyPlayer>();
-			MyAPIGateway.Multiplayer.Players.GetPlayers(players, x => !x.IsBot);
-			pruneList.RemoveAll(x => players.Any(y => y.IdentityId == x.EntityId));
+			MyAPIGateway.Multiplayer.Players.GetPlayers(players, x => ValidPlayer(x.IdentityId));
+			pruneList.RemoveAll(x => players.Any(y => y.IdentityId != x.EntityId));
+			foreach (MyEntity ent in pruneList)
+			{
+				AddGpsLocation($"DetectPlayersInSphere ({range}): {((IMyEntity)ent).DisplayName}", ((IMyEntity)ent).GetPosition());
+			}
 			return pruneList;
 		}
 
@@ -149,14 +152,14 @@ namespace ModTemplate.Namespace.Common.Utilities.Statics
 			if (grid.IsStatic || grid.IsUnsupportedStation)
 				threat /= 2;
 
-			return grid.GridSizeEnum == MyCubeSize.Large ? (int) threat * 3 : (int) threat;
+			return grid.GridSizeEnum == MyCubeSize.Large ? (int)threat * 3 : (int)threat;
 		}
 
 		public static int CalculatePlayerThreat(IMyCharacter character, Vector3D requesterPosition)
 		{
 			if (character.IsDead) return 0;
 			float threat = 0;
-			float distance = (float) Vector3D.Distance(requesterPosition, character.GetPosition());
+			float distance = (float)Vector3D.Distance(requesterPosition, character.GetPosition());
 			threat += distance < 175 ? distance < 125 ? distance < 75 ? 5000 : 2500 : 1500 : 500;
 			if (character.EquippedTool is IMyAngleGrinder) threat *= 5;
 			IMyInventory myInventory = character.GetInventory();
@@ -258,12 +261,12 @@ namespace ModTemplate.Namespace.Common.Utilities.Statics
 			return MyAPIGateway.Session.Factions.TryGetFactionById(factionId);
 		}
 
-		public static bool IsPlayer(this long faction)
+		public static bool IsPlayerFaction(this long faction)
 		{
 			return !MyAPIGateway.Session.Factions.TryGetFactionById(faction).IsEveryoneNpc();
 		}
 
-		public static bool IsNpc(this long faction)
+		public static bool IsNpcFaction(this long faction)
 		{
 			return MyAPIGateway.Session.Factions.TryGetFactionById(faction).IsEveryoneNpc();
 		}

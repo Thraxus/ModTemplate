@@ -1,4 +1,4 @@
-﻿namespace ModTemplate.Namespace.Common.DataTypes
+﻿namespace ModTemplate.Namespace.Common.Models
 {
 	public class FastQueue<T>
 	{

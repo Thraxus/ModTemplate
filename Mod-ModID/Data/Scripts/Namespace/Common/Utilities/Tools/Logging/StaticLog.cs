@@ -1,6 +1,8 @@
-﻿using ModTemplate.Namespace.Common.DataTypes;
+﻿using ModTemplate.Namespace.Common.Enums;
+using ModTemplate.Namespace.Settings;
 using VRage.Game;
 using VRage.Game.Components;
+using VRage.Utils;
 
 namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 {
@@ -8,29 +10,21 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 	// ReSharper disable once ClassNeverInstantiated.Global
 	internal class StaticLog : MySessionComponentBase
 	{
-		private const string DebugLogName = Settings.GeneralSettings.StaticDebugLogName;
-		private const string ExceptionLogName = Settings.GeneralSettings.ExceptionLogName;
-		private const string GeneralLogName = Settings.GeneralSettings.StaticGeneralLogName;
-		private const string ProfilingLogName = Settings.GeneralSettings.ProfilingLogName;
+		private const string GeneralLogName = ModSettings.StaticGeneralLogName;
+		private const string ExceptionLogName = ModSettings.ExceptionLogName;
 
-		private static Log _debugLog;
-		private static Log _exceptionLog;
 		private static Log _generalLog;
-		private static Log _profilingLog;
+		private static Log _exceptionLog;
 
-		private static readonly object DebugWriteLocker = new object();
-		private static readonly object ExceptionWriteLocker = new object();
 		private static readonly object GeneralWriteLocker = new object();
-		private static readonly object ProfilerWriteLocker = new object();
-
+		private static readonly object ExceptionWriteLocker = new object();
+		
 		/// <inheritdoc />
 		public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
 		{
 			base.Init(sessionComponent);
-			if (Settings.GeneralSettings.DebugMode) _debugLog = new Log(DebugLogName);
 			_exceptionLog = new Log(ExceptionLogName);
 			_generalLog = new Log(GeneralLogName);
-			if (Settings.GeneralSettings.ProfilingEnabled) _profilingLog = new Log(ProfilingLogName);
 			WriteToLog("StaticLogger", "Static logs loaded.", LogType.General);
 		}
 
@@ -38,11 +32,6 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 		protected override void UnloadData()
 		{
 			WriteToLog("StaticLogger", "Closing static logs.", LogType.General);
-			lock (DebugWriteLocker)
-			{
-				_debugLog?.Close();
-			}
-
 			lock (ExceptionWriteLocker)
 			{
 				_exceptionLog?.Close();
@@ -51,10 +40,6 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 			{
 				_generalLog?.Close();
 			}
-			lock (ProfilerWriteLocker)
-			{
-				_profilingLog?.Close();
-			}
 			base.UnloadData();
 		}
 
@@ -62,28 +47,14 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 		{
 			switch (logType)
 			{
-				case LogType.Debug:
-					WriteDebug(caller, message);
-					return;
 				case LogType.Exception:
 					WriteException(caller, message);
 					return;
 				case LogType.General:
 					WriteGeneral(caller, message);
 					return;
-				case LogType.Profiling:
-					WriteProfiler(caller, message);
-					return;
 				default:
 					return;
-			}
-		}
-
-		private static void WriteDebug(string caller, string message)
-		{
-			lock (DebugWriteLocker)
-			{
-				_debugLog?.WriteToLog(caller, message);
 			}
 		}
 
@@ -92,6 +63,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 			lock (ExceptionWriteLocker)
 			{
 				_exceptionLog?.WriteToLog(caller, message);
+				MyLog.Default.WriteLine($"{caller}: {message}");
 			}
 		}
 
@@ -100,14 +72,6 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 			lock (GeneralWriteLocker)
 			{
 				_generalLog?.WriteToLog(caller, message);
-			}
-		}
-
-		private static void WriteProfiler(string caller, string message)
-		{
-			lock (ProfilingLogName)
-			{
-				_profilingLog?.WriteToLog(caller, message);
 			}
 		}
 	}
