@@ -7,7 +7,6 @@ using VRage.Utils;
 namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.NoUpdate, priority: int.MinValue)]
-	// ReSharper disable once ClassNeverInstantiated.Global
 	internal class StaticLog : MySessionComponentBase
 	{
 		private const string GeneralLogName = ModSettings.StaticGeneralLogName;
@@ -43,31 +42,31 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 			base.UnloadData();
 		}
 
-		public static void WriteToLog(string caller, string message, LogType logType)
+		public static void WriteToLog(string caller, string message, LogType type, bool showOnHud = false, int duration = ModSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
 		{
-			switch (logType)
+			switch (type)
 			{
 				case LogType.Exception:
-					WriteException(caller, message);
+					WriteException(caller, message, showOnHud, duration, color);
 					return;
 				case LogType.General:
-					WriteGeneral(caller, message);
+					WriteGeneral(caller, message, showOnHud, duration, color);
 					return;
 				default:
 					return;
 			}
 		}
 
-		private static void WriteException(string caller, string message)
+		private static void WriteException(string caller, string message, bool showOnHud, int duration, string color)
 		{
 			lock (ExceptionWriteLocker)
 			{
-				_exceptionLog?.WriteToLog(caller, message);
+				_exceptionLog?.WriteToLog(caller, message, showOnHud, duration, color);
 				MyLog.Default.WriteLine($"{caller}: {message}");
 			}
 		}
 
-		private static void WriteGeneral(string caller, string message)
+		private static void WriteGeneral(string caller, string message, bool showOnHud, int duration, string color)
 		{
 			lock (GeneralWriteLocker)
 			{

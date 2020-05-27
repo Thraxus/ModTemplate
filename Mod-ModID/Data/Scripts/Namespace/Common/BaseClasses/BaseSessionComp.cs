@@ -1,4 +1,5 @@
 ﻿using ModTemplate.Namespace.Common.Enums;
+using ModTemplate.Namespace.Common.Interfaces;
 using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
 using ModTemplate.Namespace.Settings;
 using Sandbox.ModAPI;
@@ -7,7 +8,7 @@ using VRage.Game.Components;
 
 namespace ModTemplate.Namespace.Common.BaseClasses
 {
-	public abstract class BaseSessionComp : MySessionComponentBase
+	public abstract class BaseSessionComp : MySessionComponentBase, ILog
 	{
 		private readonly string _logName;
 		private readonly string _sessionName;
@@ -134,15 +135,15 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 			_generalLog?.Close();
 		}
 
-		protected void WriteToLog(string caller, string message, LogType logType)
+		public void WriteToLog(string caller, string message, LogType type, bool showOnHud = false, int duration = ModSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
 		{
-			switch (logType)
+			switch (type)
 			{
 				case LogType.Exception:
-					WriteException(caller, message);
+					WriteException(caller, message, showOnHud, duration, color);
 					return;
 				case LogType.General:
-					WriteGeneral(caller, message);
+					WriteGeneral(caller, message, showOnHud, duration, color);
 					return;
 				default:
 					return;
@@ -151,16 +152,16 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 
 		private readonly object _writeLocker = new object();
 
-		private void WriteException(string caller, string message)
+		private void WriteException(string caller, string message, bool showOnHud, int duration, string color)
 		{
-			StaticLog.WriteToLog($"{_sessionName}: {caller}", $"Exception! {message}", LogType.Exception);
+			StaticLog.WriteToLog($"{_sessionName}: {caller}", $"Exception! {message}", LogType.Exception, showOnHud, duration, color);
 		}
 
-		private void WriteGeneral(string caller, string message)
+		private void WriteGeneral(string caller, string message, bool showOnHud, int duration, string color)
 		{
 			lock (_writeLocker)
 			{
-				_generalLog?.WriteToLog($"{_sessionName}: {caller}", message);
+				_generalLog?.WriteToLog($"{_sessionName}: {caller}", message, showOnHud, duration, color);
 			}
 		}
 	}

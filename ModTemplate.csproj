@@ -157,6 +157,7 @@
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseClientSessionComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseSessionComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\LogBaseEvent.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\ILog.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\DataTypes\Enums\ExampleEnum.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\LogType.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\SessionCompType.cs" />
