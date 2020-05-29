@@ -8,21 +8,15 @@ using VRage.Game.Components;
 namespace ModTemplate.Namespace
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation, priority: int.MinValue + 1)]
-	internal class ExampleSessionCore : BaseServerSessionComp
+	internal class ExampleSessionCore : BaseSessionComp
 	{
-		private const string SessionCompName = "Core";
-
-		public ExampleSessionCore() : base(SessionCompName) { } // Do nothing else
+		protected override string CompName { get; } = "ExampleSessionCore";
+		protected override CompType Type { get; } = CompType.Server;
+		protected override bool NoUpdate { get; } = true;
 
 		// Example of how to use the event driven log (used for classes to write in their owners log)
 		private ExampleModelWithEventLog _example;
-
-		/// <inheritdoc />
-		protected override void EarlySetup()
-		{
-			base.EarlySetup();
-		}
-
+		
 		/// <inheritdoc />
 		protected override void LateSetup()
 		{
