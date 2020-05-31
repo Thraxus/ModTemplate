@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ModTemplate.Namespace.Settings;
 using Sandbox.ModAPI;
 using VRage.Game.ModAPI;
 
@@ -8,7 +7,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 {
 	internal static class ChatHandler
 	{
-		internal const string ChatCommandPrefix = ModSettings.ChatCommandPrefix;
+		internal const string ChatCommandPrefix = CommonSettings.ChatCommandPrefix;
 		private const string HelpPrefix = "help";
 
 		private static readonly Dictionary<string, Action<string>> ChatAction = new Dictionary<string, Action<string>>

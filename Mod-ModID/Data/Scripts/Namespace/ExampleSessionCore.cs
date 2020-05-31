@@ -12,7 +12,7 @@ namespace ModTemplate.Namespace
 	{
 		protected override string CompName { get; } = "ExampleSessionCore";
 		protected override CompType Type { get; } = CompType.Server;
-		protected override bool NoUpdate { get; } = true;
+		protected override MyUpdateOrder Schedule { get; } = MyUpdateOrder.NoUpdate;
 
 		// Example of how to use the event driven log (used for classes to write in their owners log)
 		private ExampleModelWithEventLog _example;

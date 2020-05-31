@@ -1,7 +1,6 @@
 ﻿using ModTemplate.Namespace.Common.Enums;
 using ModTemplate.Namespace.Common.Interfaces;
 using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
-using ModTemplate.Namespace.Settings;
 using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
@@ -14,7 +13,7 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 
 		protected abstract CompType Type { get; }
 
-		protected abstract bool NoUpdate { get; }
+		protected abstract MyUpdateOrder Schedule { get; }
 
 		internal long TickCounter;
 
@@ -31,9 +30,9 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 				case CompType.Both:
 					return false;
 				case CompType.Client:
-					return ModSettings.IsServer;
+					return CommonSettings.IsServer;
 				case CompType.Server:
-					return !ModSettings.IsServer;
+					return !CommonSettings.IsServer;
 				default:
 					return false;
 			}
@@ -64,7 +63,7 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 		{
 			_superEarlySetupComplete = true;
 			_generalLog = new Log(CompName);
-			WriteToLog("SuperEarlySetup", $"Waking up.  Is Server: {ModSettings.IsServer}", LogType.General);
+			WriteToLog("SuperEarlySetup", $"Waking up.  Is Server: {CommonSettings.IsServer}", LogType.General);
 		}
 
 		public override void BeforeStart()
@@ -87,6 +86,7 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 
 		public override void UpdateBeforeSimulation()
 		{
+			MyAPIGateway.Utilities.InvokeOnGameThread(() => SetUpdateOrder(MyUpdateOrder.NoUpdate)); // stops the client or server from updating for no reason
 			if (BlockUpdates()) return;
 			base.UpdateBeforeSimulation();
 			if (!_lateSetupComplete) LateSetup();
@@ -101,7 +101,8 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 		protected virtual void LateSetup()
 		{
 			_lateSetupComplete = true;
-			if (BlockUpdates()) MyAPIGateway.Utilities.InvokeOnGameThread(() => SetUpdateOrder(MyUpdateOrder.NoUpdate));
+			if (UpdateOrder != Schedule)
+				MyAPIGateway.Utilities.InvokeOnGameThread(() => SetUpdateOrder(Schedule)); // sets the proper update schedule to the desired schedule
 			WriteToLog("LateSetup", $"Fully online.", LogType.General);
 		}
 
@@ -125,7 +126,7 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 			_generalLog?.Close();
 		}
 
-		public void WriteToLog(string caller, string message, LogType type, bool showOnHud = false, int duration = ModSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
+		public void WriteToLog(string caller, string message, LogType type, bool showOnHud = false, int duration = CommonSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
 		{
 			switch (type)
 			{

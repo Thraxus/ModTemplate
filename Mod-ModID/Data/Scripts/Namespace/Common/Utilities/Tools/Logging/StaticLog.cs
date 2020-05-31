@@ -1,5 +1,4 @@
 ﻿using ModTemplate.Namespace.Common.Enums;
-using ModTemplate.Namespace.Settings;
 using VRage.Game;
 using VRage.Game.Components;
 using VRage.Utils;
@@ -9,8 +8,8 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 	[MySessionComponentDescriptor(MyUpdateOrder.NoUpdate, priority: int.MinValue)]
 	internal class StaticLog : MySessionComponentBase
 	{
-		private const string GeneralLogName = ModSettings.StaticGeneralLogName;
-		private const string ExceptionLogName = ModSettings.ExceptionLogName;
+		private const string GeneralLogName = CommonSettings.StaticGeneralLogName;
+		private const string ExceptionLogName = CommonSettings.ExceptionLogName;
 
 		private static Log _generalLog;
 		private static Log _exceptionLog;
@@ -44,7 +43,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 			base.UnloadData();
 		}
 
-		public static void WriteToLog(string caller, string message, LogType type, bool showOnHud = false, int duration = ModSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
+		public static void WriteToLog(string caller, string message, LogType type, bool showOnHud = false, int duration = CommonSettings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
 		{
 			switch (type)
 			{
