@@ -161,7 +161,7 @@
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\ILog.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\BufferedBinaryReader.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\FastQueue.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\CommonSettings.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Settings.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\FileHandlers\Load.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\FileHandlers\Save.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Statics\Statics.cs" />
