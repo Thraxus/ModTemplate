@@ -152,8 +152,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseClosableLoggingClass.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseClosableClass.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseGameLogicComp.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseLoggingClass.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseSessionComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\CompType.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\FactionRelationship.cs" />

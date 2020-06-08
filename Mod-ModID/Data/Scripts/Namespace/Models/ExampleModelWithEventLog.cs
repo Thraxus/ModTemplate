@@ -3,7 +3,7 @@ using ModTemplate.Namespace.Common.Enums;
 
 namespace ModTemplate.Namespace.Models
 {
-	public class ExampleModelWithEventLog : BaseClosableLoggingClass
+	public class ExampleModelWithEventLog : BaseLoggingClass
 	{
 		protected sealed override string Id { get; } = "ExampleModelWithEventLog"; // If only we could use reflection!
 

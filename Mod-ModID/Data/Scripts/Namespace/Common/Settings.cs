@@ -23,8 +23,6 @@ namespace ModTemplate.Namespace.Common
 		public const int DefaultServerMessageDisplayTime = 10000;
 		public const int TicksPerSecond = 60;
 		public const int TicksPerMinute = TicksPerSecond * 60;
-		public const int TicksPerHour = TicksPerMinute * 60;
-		public const int TicksPerDay = TicksPerHour * 24;
 
 		public static Random Random { get; } = new Random();
 

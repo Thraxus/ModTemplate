@@ -21,7 +21,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 
 			if (localPlayer.PromoteLevel < MyPromoteLevel.Admin)
 			{
-				Messaging.ShowLocalNotification($"You must be an Administrator to invoke Chat Commands.  Current Rank: {localPlayer.PromoteLevel.ToString()}");
+				Messaging.ShowLocalNotification($"You must be an Administrator to invoke Chat Commands.  Current Rank: {localPlayer.PromoteLevel}");
 				return;
 			}
 

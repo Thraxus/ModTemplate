@@ -4,7 +4,7 @@ using VRage.Game;
 
 namespace ModTemplate.Namespace.Common.BaseClasses
 {
-	public abstract class BaseClosableLoggingClass
+	public abstract class BaseLoggingClass : BaseClosableClass
 	{
 		public event Action<string, string, LogType, bool, int, string> OnWriteToLog;
 
@@ -14,14 +14,5 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 		{
 			OnWriteToLog?.Invoke($"{Id}: {caller}", message, type, showOnHud, duration, color);
 		}
-
-		private bool _isClosed;
-
-		public virtual void Close()
-		{
-			if (_isClosed) return;
-			_isClosed = true;
-		}
-		
 	}
 }
