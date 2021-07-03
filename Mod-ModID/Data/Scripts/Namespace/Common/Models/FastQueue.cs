@@ -1,4 +1,5 @@
-﻿namespace ModTemplate.Namespace.Common.Models
+﻿
+namespace ModTemplate.Data.Scripts.Namespace.Common.Models
 {
 	public class FastQueue<T>
 	{
@@ -36,6 +37,18 @@
 		public T[] GetQueue()
 		{
 			return _nodes;
+		}
+
+
+
+		public int Count => _nodes.Length;
+
+		public void Clear()
+		{
+			for (int index = _nodes.Length - 1; index >= 0; index--)
+			{
+				_nodes[index] = default(T);
+			}
 		}
 	}
 }

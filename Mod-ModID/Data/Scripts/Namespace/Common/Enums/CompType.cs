@@ -1,4 +1,5 @@
-﻿namespace ModTemplate.Namespace.Common.Enums
+﻿
+namespace ModTemplate.Data.Scripts.Namespace.Common.Enums
 {
 	public enum CompType
 	{

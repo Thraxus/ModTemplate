@@ -2,7 +2,7 @@
 using System.IO;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Namespace.Common.Utilities.FileHandlers
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.FileHandlers
 {
 	internal static class Load
 	{
@@ -18,7 +18,7 @@ namespace ModTemplate.Namespace.Common.Utilities.FileHandlers
 		}
 
 		public static T ReadFromXmlFile<T>(string fileName, Type type)
-		{	
+		{
 			if (!MyAPIGateway.Utilities.FileExistsInWorldStorage(fileName, type))
 				return default(T);
 

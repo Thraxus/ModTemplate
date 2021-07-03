@@ -2,7 +2,7 @@
 using Sandbox.Game;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Namespace.Common.Utilities.Tools.OnScreenDisplay
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.OnScreenDisplay
 {
 	/// <summary>
 	/// This is designed for local player only; intended for debug purposes.

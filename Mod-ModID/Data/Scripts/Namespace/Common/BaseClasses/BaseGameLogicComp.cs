@@ -1,8 +1,9 @@
-﻿using ModTemplate.Namespace.Common.Enums;
-using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
+﻿using ModTemplate.Data.Scripts.Namespace.Common.Enums;
+using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
 using VRage.Game.Components;
+using VRage.ObjectBuilders;
 
-namespace ModTemplate.Namespace.Common.BaseClasses
+namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
 {
 	internal abstract class BaseGameLogicComp : MyGameLogicComponent
 	{
@@ -23,6 +24,13 @@ namespace ModTemplate.Namespace.Common.BaseClasses
 				default:
 					return;
 			}
+		}
+
+		public override MyObjectBuilder_EntityBase GetObjectBuilder(bool copy = false)
+		{
+			// Always return base.GetObjectBuilder(); after your code! 
+			// Do all saving here, make sure to return the OB when done;
+			return base.GetObjectBuilder(copy);
 		}
 
 		public override void UpdateBeforeSimulation()

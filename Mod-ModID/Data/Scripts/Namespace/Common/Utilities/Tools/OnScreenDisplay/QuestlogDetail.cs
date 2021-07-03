@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ModTemplate.Namespace.Common.Utilities.Tools.OnScreenDisplay
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.OnScreenDisplay
 {
 	public class QuestLogDetail
 	{

@@ -1,4 +1,4 @@
-﻿namespace ModTemplate.Namespace.Settings
+﻿namespace ModTemplate.Data.Scripts.Namespace.Settings
 {
 	public static class ModSettings
 	{	// These settings should be used by the mod directly, and not changeable by a user.  They are considered "reference only"

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
-using ModTemplate.Namespace.Common.Models;
-using ModTemplate.Namespace.Common.Utilities.Tools.Networking;
+using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Networking;
 using Sandbox.ModAPI;
 using VRage.Game;
 
-namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging
 {
 	public class Log
 	{
@@ -14,8 +13,6 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 		private TextWriter TextWriter { get; set; }
 
 		private static string TimeStamp => DateTime.Now.ToString("MMddyy-HH:mm:ss:ffff");
-
-		private readonly FastQueue<string> _messageQueue = new FastQueue<string>(20);
 
 		private const int DefaultIndent = 4;
 
@@ -47,14 +44,6 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 			BuildHudNotification(caller, message, duration, color);
 		}
 
-		public void GetTailMessages()
-		{
-			lock (_lockObject)
-			{
-				MyAPIGateway.Utilities.ShowMissionScreen(LogName, "", "", string.Join($"{Environment.NewLine}{Environment.NewLine}", _messageQueue.GetQueue()));
-			}
-		}
-
 		private static void BuildHudNotification(string caller, string message, int duration, string color)
 		{
 			Messaging.ShowLocalNotification($"{caller}{Indent}{message}", duration, color);
@@ -72,7 +61,6 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 
 		private void WriteLine(string line)
 		{
-			_messageQueue?.Enqueue(line);
 			TextWriter?.WriteLine(line);
 			TextWriter?.Flush();
 		}

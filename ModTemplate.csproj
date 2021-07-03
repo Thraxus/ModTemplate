@@ -152,20 +152,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseClosableClass.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseGameLogicComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseLoggingClass.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseSessionComp.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\CommonCore.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\CompType.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\FactionRelationship.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\LogType.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\ILog.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Factions\DataTypes\Enums\FactionTypes.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Factions\Models\FactionDictionaries.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Factions\Models\Settings.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\ICommon.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\BufferedBinaryReader.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\FastQueue.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Reporting\GameSettings.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Settings.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\FileHandlers\Load.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\FileHandlers\Save.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Statics\Statics.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Statics\ThrusterCalculations.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Statics\VectorManipulations.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\Log.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\StaticLog.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\ChatHandler.cs" />

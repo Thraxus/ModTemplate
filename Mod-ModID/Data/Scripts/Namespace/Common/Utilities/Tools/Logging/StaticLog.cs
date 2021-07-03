@@ -1,9 +1,9 @@
-﻿using ModTemplate.Namespace.Common.Enums;
+﻿using ModTemplate.Data.Scripts.Namespace.Common.Enums;
 using VRage.Game;
 using VRage.Game.Components;
 using VRage.Utils;
 
-namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.NoUpdate, priority: int.MinValue)]
 	internal class StaticLog : MySessionComponentBase
@@ -16,7 +16,7 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Logging
 
 		private static readonly object GeneralWriteLocker = new object();
 		private static readonly object ExceptionWriteLocker = new object();
-		
+
 		/// <inheritdoc />
 		public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
 		{

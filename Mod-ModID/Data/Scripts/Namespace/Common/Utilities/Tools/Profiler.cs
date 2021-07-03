@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
-using ModTemplate.Namespace.Common.Enums;
-using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
+using ModTemplate.Data.Scripts.Namespace.Common.Enums;
+using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
 
-namespace ModTemplate.Namespace.Common.Utilities.Tools
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools
 {
 	/// <inheritdoc cref="Profiler" />
 	/// <summary>

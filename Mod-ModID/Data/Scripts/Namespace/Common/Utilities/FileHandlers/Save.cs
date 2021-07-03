@@ -2,7 +2,7 @@
 using System.IO;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Namespace.Common.Utilities.FileHandlers
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.FileHandlers
 {
 	public static class Save
 	{
@@ -51,7 +51,7 @@ namespace ModTemplate.Namespace.Common.Utilities.FileHandlers
 
 		public static void WriteToSandbox(Type T)
 		{
-			
+
 		}
 	}
 }

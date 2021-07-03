@@ -5,7 +5,7 @@ using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.ModAPI;
 
-namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Networking
 {
 	public static class Messaging
 	{
@@ -13,18 +13,32 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 
 		public static void Register()
 		{
-			MyAPIGateway.Multiplayer.RegisterMessageHandler(Settings.NetworkId, MessageHandler);
+			//MyAPIGateway.Multiplayer.RegisterMessageHandler(Settings.NetworkId, MessageHandler);
+			MyAPIGateway.Multiplayer.RegisterSecureMessageHandler(Settings.NetworkId, MessageHandler);
 			MyAPIGateway.Utilities.MessageEntered += ChatMessageHandler;
 		}
 
 		public static void UnRegister()
 		{
-			MyAPIGateway.Multiplayer.UnregisterMessageHandler(Settings.NetworkId, MessageHandler);
+			//MyAPIGateway.Multiplayer.UnregisterMessageHandler(Settings.NetworkId, MessageHandler);
+			MyAPIGateway.Multiplayer.UnregisterSecureMessageHandler(Settings.NetworkId, MessageHandler);
 			lock (_playerCache)
 			{
 				_playerCache = null;
 			}
 			MyAPIGateway.Utilities.MessageEntered -= ChatMessageHandler;
+		}
+
+		/// <summary>
+		/// Secure way of validating a message (to/from)
+		/// </summary>
+		/// <param name="id">Message ID</param>
+		/// <param name="message">What is being sent</param>
+		/// <param name="to">Steam64 ID or 0 for server</param>
+		/// <param name="fromServer">Does this message come from the server or no</param>
+		private static void MessageHandler(ushort id, byte[] message, ulong to, bool fromServer)
+		{
+
 		}
 
 		private static void MessageHandler(byte[] bytes)
@@ -36,7 +50,6 @@ namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
 				m.HandleClient();
 		}
 
-		// ReSharper disable once RedundantAssignment
 		private static void ChatMessageHandler(string message, ref bool sendToOthers)
 		{
 			if (!message.ToLower().StartsWith(ChatHandler.ChatCommandPrefix.ToLower()))

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModTemplate.Namespace.Common.Enums;
-using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
+using ModTemplate.Data.Scripts.Namespace.Common.Enums;
+using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
 using Sandbox.Game;
 using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
@@ -18,7 +18,7 @@ using IMyCubeGrid = VRage.Game.ModAPI.IMyCubeGrid;
 using IMyEntity = VRage.ModAPI.IMyEntity;
 using IMyInventory = VRage.Game.ModAPI.IMyInventory;
 
-namespace ModTemplate.Namespace.Common.Utilities.Statics
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Statics
 {
 	public static class Statics
 	{

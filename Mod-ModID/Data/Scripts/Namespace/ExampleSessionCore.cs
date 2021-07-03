@@ -1,11 +1,11 @@
-﻿using ModTemplate.Namespace.Common.BaseClasses;
-using ModTemplate.Namespace.Common.Enums;
-using ModTemplate.Namespace.Models;
+﻿using ModTemplate.Data.Scripts.Namespace.Common.BaseClasses;
+using ModTemplate.Data.Scripts.Namespace.Common.Enums;
+using ModTemplate.Data.Scripts.Namespace.Models;
 using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
 
-namespace ModTemplate.Namespace
+namespace ModTemplate.Data.Scripts.Namespace
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation, priority: int.MinValue + 1)]
 	internal class ExampleSessionCore : BaseSessionComp

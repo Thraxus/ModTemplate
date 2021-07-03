@@ -1,7 +1,7 @@
-﻿using ModTemplate.Namespace.Common.BaseClasses;
-using ModTemplate.Namespace.Common.Enums;
+﻿using ModTemplate.Data.Scripts.Namespace.Common.BaseClasses;
+using ModTemplate.Data.Scripts.Namespace.Common.Enums;
 
-namespace ModTemplate.Namespace.Models
+namespace ModTemplate.Data.Scripts.Namespace.Models
 {
 	public class ExampleModelWithEventLog : BaseLoggingClass
 	{

@@ -1,9 +1,9 @@
-﻿using ModTemplate.Namespace.Common.Enums;
-using ModTemplate.Namespace.Common.Utilities.FileHandlers;
-using ModTemplate.Namespace.Common.Utilities.Tools.Logging;
+﻿using ModTemplate.Data.Scripts.Namespace.Common.Enums;
+using ModTemplate.Data.Scripts.Namespace.Common.Utilities.FileHandlers;
+using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
 using VRage.Game.ModAPI.Ingame.Utilities;
 
-namespace ModTemplate.Namespace.Settings.MyCustomIni
+namespace ModTemplate.Data.Scripts.Namespace.Settings.MyCustomIni
 {
 	public static class ImportCustomUserSettings
 	{

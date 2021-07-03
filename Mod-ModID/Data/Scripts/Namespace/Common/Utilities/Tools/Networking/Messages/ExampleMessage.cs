@@ -1,4 +1,5 @@
-﻿namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking.Messages
+﻿
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Networking.Messages
 {
 	class ExampleMessage
 	{

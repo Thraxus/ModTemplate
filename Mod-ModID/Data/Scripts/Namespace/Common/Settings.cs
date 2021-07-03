@@ -1,7 +1,7 @@
 ﻿using System;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Namespace.Common
+namespace ModTemplate.Data.Scripts.Namespace.Common
 {
 	public static class Settings
 	{   // These settings should be used by the mod directly, and not changeable by a user.  They are considered "reference only"

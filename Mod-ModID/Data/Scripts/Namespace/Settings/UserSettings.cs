@@ -1,4 +1,4 @@
-﻿namespace ModTemplate.Namespace.Settings
+﻿namespace ModTemplate.Data.Scripts.Namespace.Settings
 {
 	public static class UserSettings
 	{   // These settings should be used by the mod directly, but changeable by the user

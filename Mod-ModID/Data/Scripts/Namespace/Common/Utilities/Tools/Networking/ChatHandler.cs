@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sandbox.ModAPI;
 using VRage.Game.ModAPI;
 
-namespace ModTemplate.Namespace.Common.Utilities.Tools.Networking
+namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Networking
 {
 	internal static class ChatHandler
 	{
