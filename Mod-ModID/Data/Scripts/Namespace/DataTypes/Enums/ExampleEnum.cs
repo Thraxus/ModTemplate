@@ -1,4 +1,4 @@
-﻿namespace ModTemplate.Data.Scripts.Namespace.DataTypes.Enums
+﻿namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.DataTypes.Enums
 {
 	public enum ExampleEnum
 	{

@@ -1,11 +1,11 @@
-﻿using ModTemplate.Data.Scripts.Namespace.Common.BaseClasses;
-using ModTemplate.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Data.Scripts.Namespace.Models;
+﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Enums;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Models;
 using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
 
-namespace ModTemplate.Data.Scripts.Namespace
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation, priority: int.MinValue + 1)]
 	internal class ExampleSessionCore : BaseSessionComp
@@ -21,27 +21,27 @@ namespace ModTemplate.Data.Scripts.Namespace
 		protected override void LateSetup()
 		{
 			base.LateSetup();
-			WriteToLog("LateSetup", $"Cargo: {MyAPIGateway.Session.SessionSettings.CargoShipsEnabled}", LogType.General);
-			WriteToLog("LateSetup", $"Encounters: {MyAPIGateway.Session.SessionSettings.EnableEncounters}", LogType.General);
-			WriteToLog("LateSetup", $"Drones: {MyAPIGateway.Session.SessionSettings.EnableDrones}", LogType.General);
-			WriteToLog("LateSetup", $"Scripts: {MyAPIGateway.Session.SessionSettings.EnableIngameScripts}", LogType.General);
-			WriteToLog("LateSetup", $"Sync: {MyAPIGateway.Session.SessionSettings.SyncDistance}", LogType.General);
-			WriteToLog("LateSetup", $"View: {MyAPIGateway.Session.SessionSettings.ViewDistance}", LogType.General);
-			WriteToLog("LateSetup", $"PiratePCU: {MyAPIGateway.Session.SessionSettings.PiratePCU}", LogType.General);
-			WriteToLog("LateSetup", $"TotalPCU: {MyAPIGateway.Session.SessionSettings.TotalPCU}", LogType.General);
+			WriteGeneral("LateSetup", $"Cargo: {MyAPIGateway.Session.SessionSettings.CargoShipsEnabled}");
+			WriteGeneral("LateSetup", $"Encounters: {MyAPIGateway.Session.SessionSettings.EnableEncounters}");
+			WriteGeneral("LateSetup", $"Drones: {MyAPIGateway.Session.SessionSettings.EnableDrones}");
+			WriteGeneral("LateSetup", $"Scripts: {MyAPIGateway.Session.SessionSettings.EnableIngameScripts}");
+			WriteGeneral("LateSetup", $"Sync: {MyAPIGateway.Session.SessionSettings.SyncDistance}");
+			WriteGeneral("LateSetup", $"View: {MyAPIGateway.Session.SessionSettings.ViewDistance}");
+			WriteGeneral("LateSetup", $"PiratePCU: {MyAPIGateway.Session.SessionSettings.PiratePCU}");
+			WriteGeneral("LateSetup", $"TotalPCU: {MyAPIGateway.Session.SessionSettings.TotalPCU}");
 			foreach (MyObjectBuilder_Checkpoint.ModItem mod in MyAPIGateway.Session.Mods)
-				WriteToLog("LateSetup", $"Mod: {mod}", LogType.General);
+				WriteGeneral("LateSetup", $"Mod: {mod}");
 
 
 			_example = new ExampleModelWithEventLog();
-			_example.OnWriteToLog += WriteToLog;
+			_example.OnWriteToLog += WriteGeneral;
 			_example.ExampleOfClassWritingToOwnersLog();
 		}
 
 		/// <inheritdoc />
 		protected override void Unload()
 		{
-			_example.OnWriteToLog -= WriteToLog;
+			_example.OnWriteToLog -= WriteGeneral;
 			base.Unload();
 		}
 	}

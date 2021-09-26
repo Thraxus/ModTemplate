@@ -1,4 +1,4 @@
-﻿namespace ModTemplate.Data.Scripts.Namespace.Settings.MyCustomIni
+﻿namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Settings.MyCustomIni
 {
 	public static class IniSupport
 	{

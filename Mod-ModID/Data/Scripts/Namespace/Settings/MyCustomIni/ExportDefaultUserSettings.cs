@@ -1,7 +1,7 @@
-﻿using ModTemplate.Data.Scripts.Namespace.Common.Utilities.FileHandlers;
+﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.FileHandlers;
 using VRage.Game.ModAPI.Ingame.Utilities;
 
-namespace ModTemplate.Data.Scripts.Namespace.Settings.MyCustomIni
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Settings.MyCustomIni
 {
 	public static class ExportDefaultUserSettings
 	{

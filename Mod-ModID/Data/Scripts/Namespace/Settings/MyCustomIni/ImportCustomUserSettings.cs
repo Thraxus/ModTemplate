@@ -1,17 +1,16 @@
-﻿using ModTemplate.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Data.Scripts.Namespace.Common.Utilities.FileHandlers;
-using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
+﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.FileHandlers;
 using VRage.Game.ModAPI.Ingame.Utilities;
 
-namespace ModTemplate.Data.Scripts.Namespace.Settings.MyCustomIni
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Settings.MyCustomIni
 {
-	public static class ImportCustomUserSettings
+	public class ImportCustomUserSettings : BaseLoggingClass
 	{
 		private static readonly MyIni MyIni = new MyIni();
-		private static string _customUserIni;
-		private static bool _customConfigSet;
+		private string _customUserIni;
+		private bool _customConfigSet;
 
-		public static void Run()
+		public void Run()
 		{
 			if (_customConfigSet) return;
 			_customConfigSet = true;
@@ -19,19 +18,19 @@ namespace ModTemplate.Data.Scripts.Namespace.Settings.MyCustomIni
 			_customUserIni = Load.ReadFileFromWorldStorage(ModSettings.MyIniFileName, typeof(IniSupport));
 			if (string.IsNullOrEmpty(_customUserIni))
 			{
-				StaticLog.WriteToLog("GetCustomUserIni", "No custom settings found. Exporting vanilla settings.", LogType.General);
+				WriteToLog("GetCustomUserIni", "No custom settings found. Exporting vanilla settings.");
 				ExportDefaultUserSettings.Run();
 				return;
 			}
 			if (!MyIni.TryParse(_customUserIni))
 			{
-				StaticLog.WriteToLog("GetCustomUserIni", "Parse failed for custom user settings. Exporting vanilla settings.", LogType.General);
+				WriteToLog("GetCustomUserIni", "Parse failed for custom user settings. Exporting vanilla settings.");
 				ExportDefaultUserSettings.Run();
 				return;
 			}
 			if (!MyIni.ContainsSection(ConfigConstants.SectionName))
 			{
-				StaticLog.WriteToLog("GetCustomUserIni", "User config did not contain the proper section. Exporting vanilla settings.", LogType.General);
+				WriteToLog("GetCustomUserIni", "User config did not contain the proper section. Exporting vanilla settings.");
 				ExportDefaultUserSettings.Run();
 				return;
 			}
@@ -42,7 +41,6 @@ namespace ModTemplate.Data.Scripts.Namespace.Settings.MyCustomIni
 		{
 			UserSettings.MyIniSettingBoolExample = MyIni.Get(ConfigConstants.SectionName, IniSupport.MyIniSettingBoolExampleName).ToBoolean(UserSettings.MyIniSettingBoolExample);
 			UserSettings.MyIniSettingIntExample = MyIni.Get(ConfigConstants.SectionName, IniSupport.MyIniSettingIntExampleName).ToBoolean(UserSettings.MyIniSettingIntExample);
-
 		}
 	}
 }

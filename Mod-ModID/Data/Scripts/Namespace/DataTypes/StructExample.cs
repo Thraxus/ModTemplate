@@ -1,4 +1,4 @@
-﻿namespace ModTemplate.Data.Scripts.Namespace.DataTypes
+﻿namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.DataTypes
 {
 	public struct StructExample
 	{

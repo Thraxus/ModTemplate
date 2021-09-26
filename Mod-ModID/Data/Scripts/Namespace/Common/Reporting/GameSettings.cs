@@ -4,7 +4,7 @@ using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.ModAPI;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.Reporting
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Reporting
 {
 	public static class GameSettings
 	{

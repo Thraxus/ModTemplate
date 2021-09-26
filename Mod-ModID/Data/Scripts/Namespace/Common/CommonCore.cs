@@ -1,10 +1,10 @@
-﻿using ModTemplate.Data.Scripts.Namespace.Common.BaseClasses;
-using ModTemplate.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Data.Scripts.Namespace.Common.Factions.Models;
-using ModTemplate.Data.Scripts.Namespace.Common.Reporting;
+﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Enums;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Factions.Models;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Reporting;
 using VRage.Game.Components;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation, priority: int.MinValue + 1)]
 	public class CommonCore : BaseSessionComp
@@ -22,8 +22,8 @@ namespace ModTemplate.Data.Scripts.Namespace.Common
 		{
 			base.LateSetup();
 			FactionDictionaries.Initialize();
-			WriteToLog($"{CompName} - Game Settings", $"{GameSettings.Report()}", LogType.General);
-			WriteToLog($"{CompName} - Factions", $"{FactionDictionaries.Report()}", LogType.General);
+			WriteGeneral($"{CompName} - Game Settings", $"{GameSettings.Report()}");
+			WriteGeneral($"{CompName} - Factions", $"{FactionDictionaries.Report()}");
 		}
 	}
 }

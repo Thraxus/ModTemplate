@@ -5,7 +5,7 @@ using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.ModAPI;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Networking
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Networking
 {
 	public static class Messaging
 	{

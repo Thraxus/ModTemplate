@@ -1,31 +1,14 @@
-﻿using ModTemplate.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
-using VRage.Game.Components;
+﻿using VRage.Game.Components;
 using VRage.ObjectBuilders;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 {
 	internal abstract class BaseGameLogicComp : MyGameLogicComponent
 	{
 		protected string EntityName = "PlaceholderName";
 		protected long EntityId = 0L;
 		protected long Ticks;
-
-		public void WriteToLog(string caller, string message, LogType logType)
-		{
-			switch (logType)
-			{
-				case LogType.General:
-					GeneralLog(caller, message);
-					return;
-				case LogType.Exception:
-					ExceptionLog(caller, message);
-					return;
-				default:
-					return;
-			}
-		}
-
+		
 		public override MyObjectBuilder_EntityBase GetObjectBuilder(bool copy = false)
 		{
 			// Always return base.GetObjectBuilder(); after your code! 
@@ -41,15 +24,5 @@ namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
 		}
 
 		protected abstract void TickTimer();
-
-		private void GeneralLog(string caller, string message)
-		{
-			StaticLog.WriteToLog($"{EntityName} ({EntityId}): {caller}", message, LogType.General);
-		}
-
-		private void ExceptionLog(string caller, string message)
-		{
-			StaticLog.WriteToLog($"{EntityName} ({EntityId}): {caller}", $"Exception! {message}", LogType.Exception);
-		}
 	}
 }

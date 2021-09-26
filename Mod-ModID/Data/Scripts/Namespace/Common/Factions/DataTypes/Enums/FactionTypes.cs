@@ -1,5 +1,5 @@
 ﻿
-namespace ModTemplate.Data.Scripts.Namespace.Common.Factions.DataTypes.Enums
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Factions.DataTypes.Enums
 {
 	public enum FactionTypes
 	{

@@ -1,13 +1,11 @@
 ﻿using System;
-using ModTemplate.Data.Scripts.Namespace.Common.Enums;
-using VRage.Game;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.Interfaces
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Interfaces
 {
 	public interface ICommon
 	{
 		event Action<ICommon> OnClose;
-		event Action<string, string, LogType, bool, int, string> OnWriteToLog;
+		event Action<string, string> OnWriteToLog;
 
 		void Update(ulong tick);
 
@@ -15,6 +13,6 @@ namespace ModTemplate.Data.Scripts.Namespace.Common.Interfaces
 
 		void Close();
 
-		void WriteToLog(string caller, string message, LogType type, bool showOnHud = false, int duration = Settings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green);
+		void WriteToLog(string caller, string message);
 	}
 }

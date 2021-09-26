@@ -1,8 +1,8 @@
-﻿using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Networking.Messages;
+﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Networking.Messages;
 using ProtoBuf;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Networking
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Networking
 {
 	[ProtoInclude(10, typeof(ExampleMessage))]
 	[ProtoContract]

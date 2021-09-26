@@ -173,7 +173,6 @@
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Statics\ThrusterCalculations.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Statics\VectorManipulations.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\Log.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Logging\StaticLog.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\ChatHandler.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\MessageBase.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Tools\Networking\Messages\ExampleMessage.cs" />

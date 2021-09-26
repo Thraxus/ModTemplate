@@ -1,13 +1,11 @@
 ﻿using System;
-using ModTemplate.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Data.Scripts.Namespace.Common.Interfaces;
-using VRage.Game;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Interfaces;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 {
 	public abstract class BaseLoggingClass : ICommon
 	{
-		public event Action<string, string, LogType, bool, int, string> OnWriteToLog;
+		public event Action<string, string> OnWriteToLog;
 		public event Action<ICommon> OnClose;
 
 		public bool IsClosed { get; private set; }
@@ -20,12 +18,10 @@ namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
 		}
 
 		public virtual void Update(ulong tick) { }
-
-		protected abstract string Id { get; }
-
-		public void WriteToLog(string caller, string message, LogType type, bool showOnHud = false, int duration = Settings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
+		
+		public void WriteToLog(string caller, string message)
 		{
-			OnWriteToLog?.Invoke($"{Id}: {caller}", message, type, showOnHud, duration, color);
+			OnWriteToLog?.Invoke(caller, message);
 		}
 	}
 }

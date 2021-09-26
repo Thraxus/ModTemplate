@@ -1,10 +1,10 @@
-﻿using ModTemplate.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
+﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Enums;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
 using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.Components;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 {
 	public abstract class BaseSessionComp : MySessionComponentBase
 	{
@@ -76,7 +76,7 @@ namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
 		{
 			_superEarlySetupComplete = true;
 			_generalLog = new Log(CompName);
-			WriteToLog("SuperEarlySetup", $"Waking up.  Is Server: {Settings.IsServer}", LogType.General);
+			WriteGeneral("SuperEarlySetup", $"Waking up.  Is Server: {Settings.IsServer}");
 		}
 
 		/// <summary>
@@ -149,7 +149,7 @@ namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
 			_lateSetupComplete = true;
 			if (UpdateOrder != Schedule)
 				MyAPIGateway.Utilities.InvokeOnGameThread(() => SetUpdateOrder(Schedule)); // sets the proper update schedule to the desired schedule
-			WriteToLog("LateSetup", $"Fully online.", LogType.General);
+			WriteGeneral("LateSetup", $"Fully online.");
 		}
 
 		/// <summary>
@@ -170,25 +170,10 @@ namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
 		protected virtual void Unload()
 		{
 			if (BlockUpdates()) return;
-			WriteToLog("Unload", $"Retired.", LogType.General);
+			WriteGeneral("Unload", $"Retired.");
 			_generalLog?.Close();
 		}
-
-		public void WriteToLog(string caller, string message, LogType type, bool showOnHud = false, int duration = Settings.DefaultLocalMessageDisplayTime, string color = MyFontEnum.Green)
-		{
-			switch (type)
-			{
-				case LogType.Exception:
-					WriteException(caller, message, showOnHud, duration, color);
-					return;
-				case LogType.General:
-					WriteGeneral(caller, message, showOnHud, duration, color);
-					return;
-				default:
-					return;
-			}
-		}
-
+		
 		/// <summary>
 		///  Gets called 60 times a second before all other update methods, regardless of frame rate, game pause or MyUpdateOrder.
 		/// </summary>
@@ -223,19 +208,15 @@ namespace ModTemplate.Data.Scripts.Namespace.Common.BaseClasses
 
 		}
 
-		private readonly object _writeLocker = new object();
-
-		private void WriteException(string caller, string message, bool showOnHud, int duration, string color)
+		
+		public void WriteException(string caller, string message)
 		{
-			StaticLog.WriteToLog($"{CompName}: {caller}", $"Exception! {message}", LogType.Exception, showOnHud, duration, color);
+			_generalLog?.WriteException(message, $"{CompName}: {caller}");
 		}
 
-		private void WriteGeneral(string caller, string message, bool showOnHud, int duration, string color)
+		public void WriteGeneral(string caller = "", string message = "")
 		{
-			lock (_writeLocker)
-			{
-				_generalLog?.WriteToLog($"{CompName}: {caller}", message, showOnHud, duration, color);
-			}
+			_generalLog?.WriteGeneral(message,$"{CompName}: {caller}");
 		}
 	}
 }

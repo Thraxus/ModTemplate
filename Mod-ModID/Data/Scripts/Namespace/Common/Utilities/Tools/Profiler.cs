@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using ModTemplate.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools
 {
 	/// <inheritdoc cref="Profiler" />
 	/// <summary>
@@ -26,11 +24,16 @@ namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools
 			_start = Stopwatch.GetTimestamp();
 		}
 
-		public void Dispose()
+		public override string ToString()
 		{
 			long end = Stopwatch.GetTimestamp();
 			TimeSpan timespan = new TimeSpan(end - _start);
-			StaticLog.WriteToLog(_name, $"{timespan.TotalMilliseconds:0.##########}ms", LogType.General);
+			return _name + $"{timespan.TotalMilliseconds:0.##########}ms";
+		}
+
+		public void Dispose()
+		{
+			
 		}
 	}
 }

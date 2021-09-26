@@ -5,7 +5,7 @@ using Sandbox.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Statics
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Statics
 {
 	public static class ThrusterCalculations
 	{

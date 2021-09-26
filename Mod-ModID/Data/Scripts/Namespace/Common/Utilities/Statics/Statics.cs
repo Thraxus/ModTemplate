@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModTemplate.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
+using System.Text;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Enums;
 using Sandbox.Game;
 using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
@@ -18,7 +18,7 @@ using IMyCubeGrid = VRage.Game.ModAPI.IMyCubeGrid;
 using IMyEntity = VRage.ModAPI.IMyEntity;
 using IMyInventory = VRage.Game.ModAPI.IMyInventory;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Statics
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Statics
 {
 	public static class Statics
 	{
@@ -288,16 +288,24 @@ namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.Statics
 
 		#region Debug methods - should not be used in production code
 
-		public static void PrintTerminalActions(IMyEntity block)
+		public static string PrintTerminalActions(IMyEntity block)
 		{
 			IMyTerminalBlock myTerminalBlock = block as IMyTerminalBlock;
-			if (myTerminalBlock == null) return;
+			if (myTerminalBlock == null) return "";
 			List<ITerminalAction> results = new List<ITerminalAction>();
 			myTerminalBlock.GetActions(results);
+			StringBuilder sb = new StringBuilder();
+			sb.AppendLine();
+			sb.AppendLine();
+			sb.AppendFormat("{0,-2}Terminal Actions", " ");
+			sb.AppendLine();
 			foreach (ITerminalAction terminalAction in results)
 			{
-				StaticLog.WriteToLog("PrintTerminalActions", $"Actions: {terminalAction.Id} | {terminalAction.Name}", LogType.General);
+				sb.AppendFormat("{0,-4}[{1}]{2}", " ", terminalAction.Id, terminalAction.Name);
+				sb.AppendLine();
 			}
+			sb.AppendLine();
+			return sb.ToString();
 		}
 
 		public static void AddGpsLocation(string message, Vector3D location)

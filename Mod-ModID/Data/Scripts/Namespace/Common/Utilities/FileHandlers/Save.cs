@@ -2,7 +2,7 @@
 using System.IO;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Data.Scripts.Namespace.Common.Utilities.FileHandlers
+namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.FileHandlers
 {
 	public static class Save
 	{
