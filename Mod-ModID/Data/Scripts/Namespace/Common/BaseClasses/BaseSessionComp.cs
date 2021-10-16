@@ -211,12 +211,12 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		
 		public void WriteException(string caller, string message)
 		{
-			_generalLog?.WriteException(message, $"{CompName}: {caller}");
+			_generalLog?.WriteException($"{CompName}: {caller}", message);
 		}
 
 		public void WriteGeneral(string caller = "", string message = "")
 		{
-			_generalLog?.WriteGeneral(message,$"{CompName}: {caller}");
+			_generalLog?.WriteGeneral($"{CompName}: {caller}", message);
 		}
 	}
 }

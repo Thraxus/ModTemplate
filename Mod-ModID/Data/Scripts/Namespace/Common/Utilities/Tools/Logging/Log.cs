@@ -10,7 +10,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Lo
 
 		private TextWriter TextWriter { get; set; }
 
-		private static string TimeStamp => DateTime.Now.ToString("ddMMMyy_t:HH:mm:ss:ffff");
+		private static string TimeStamp => DateTime.Now.ToString("ddMMMyy_HH:mm:ss:ffff");
 
 		private const int DefaultIndent = 4;
 
