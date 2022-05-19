@@ -18,8 +18,8 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		}
 
 		public virtual void Update(ulong tick) { }
-		
-		public void WriteToLog(string caller, string message)
+
+		public virtual void WriteGeneral(string caller, string message)
 		{
 			OnWriteToLog?.Invoke(caller, message);
 		}

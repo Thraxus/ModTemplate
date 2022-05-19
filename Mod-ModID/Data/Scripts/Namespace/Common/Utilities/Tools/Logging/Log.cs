@@ -44,7 +44,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Lo
 		{
 			BuildLogLine(caller, "Exception!\n\n" + message);
 		}
-		
+
 		private readonly object _lockObject = new object();
 
 		private void BuildLogLine(string caller, string message)

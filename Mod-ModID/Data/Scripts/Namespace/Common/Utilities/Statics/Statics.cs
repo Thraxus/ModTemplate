@@ -308,10 +308,10 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Statics
 			return sb.ToString();
 		}
 
-		public static void AddGpsLocation(string message, Vector3D location)
-		{
-			MyAPIGateway.Session.GPS.AddGps(MyAPIGateway.Session.LocalHumanPlayer.IdentityId, MyAPIGateway.Session.GPS.Create(message, "", location, true));
-		}
+        public static void AddGpsLocation(string message, Vector3D location)
+        {
+	        MyAPIGateway.Session.GPS.AddGps(MyAPIGateway.Session.LocalHumanPlayer.IdentityId, MyAPIGateway.Session.GPS.Create(message, "", location, true));
+        }
 
 		#endregion
 

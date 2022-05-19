@@ -13,6 +13,6 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Interfaces
 
 		void Close();
 
-		void WriteToLog(string caller, string message);
+		void WriteGeneral(string caller, string message);
 	}
 }

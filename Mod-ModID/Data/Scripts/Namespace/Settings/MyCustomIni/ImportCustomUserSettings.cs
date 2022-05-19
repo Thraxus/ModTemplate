@@ -15,22 +15,22 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Settings.MyCustomIni
 			if (_customConfigSet) return;
 			_customConfigSet = true;
 
-			_customUserIni = Load.ReadFileFromWorldStorage(ModSettings.MyIniFileName, typeof(IniSupport));
+			_customUserIni = Load.ReadFileInWorldStorage<ImportCustomUserSettings>(ModSettings.MyIniFileName);
 			if (string.IsNullOrEmpty(_customUserIni))
 			{
-				WriteToLog("GetCustomUserIni", "No custom settings found. Exporting vanilla settings.");
+				WriteGeneral("GetCustomUserIni", "No custom settings found. Exporting vanilla settings.");
 				ExportDefaultUserSettings.Run();
 				return;
 			}
 			if (!MyIni.TryParse(_customUserIni))
 			{
-				WriteToLog("GetCustomUserIni", "Parse failed for custom user settings. Exporting vanilla settings.");
+                WriteGeneral("GetCustomUserIni", "Parse failed for custom user settings. Exporting vanilla settings.");
 				ExportDefaultUserSettings.Run();
 				return;
 			}
 			if (!MyIni.ContainsSection(ConfigConstants.SectionName))
 			{
-				WriteToLog("GetCustomUserIni", "User config did not contain the proper section. Exporting vanilla settings.");
+                WriteGeneral("GetCustomUserIni", "User config did not contain the proper section. Exporting vanilla settings.");
 				ExportDefaultUserSettings.Run();
 				return;
 			}

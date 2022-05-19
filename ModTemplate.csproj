@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ModTemplate</RootNamespace>
     <AssemblyName>ModTemplate</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -152,21 +153,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseController.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseFactory.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseGameLogicComp.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseLoggingClass.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseSessionComp.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\CommonCore.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\BaseClasses\BaseXmlUserSettings.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\CompType.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\FactionRelationship.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Enums\LogType.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Extensions\Bools.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Factions\DataTypes\Enums\FactionTypes.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Factions\Models\FactionDictionaries.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Factions\Models\Settings.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Generics\ActionQueue.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Generics\ObjectPool.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\ICommon.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\ILog.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\BufferedBinaryReader.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\FastQueue.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\References.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Reporting\ExistingFactions.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Reporting\GameSettings.cs" />
-    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Settings.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Reporting\InstalledMods.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Reporting\StoredItentities.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\FileHandlers\Load.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\FileHandlers\Save.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Utilities\Statics\Statics.cs" />

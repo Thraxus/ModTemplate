@@ -8,7 +8,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		protected string EntityName = "PlaceholderName";
 		protected long EntityId = 0L;
 		protected long Ticks;
-		
+
 		public override MyObjectBuilder_EntityBase GetObjectBuilder(bool copy = false)
 		{
 			// Always return base.GetObjectBuilder(); after your code! 

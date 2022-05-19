@@ -6,7 +6,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Models
 	{
 		public void ExampleOfClassWritingToOwnersLog()
 		{
-			WriteToLog("ExampleOfClassWritingToOwnersLog", "Some Message");
+			WriteGeneral("ExampleOfClassWritingToOwnersLog", "Some Message");
 		}
 	}
 }

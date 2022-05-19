@@ -28,7 +28,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Settings.MyCustomIni
 
 		private static void Export()
 		{
-			Save.WriteToFile(ModSettings.MyIniFileName, MyIni, typeof(IniSupport));
+			Save.WriteFileToWorldStorage(ModSettings.MyIniFileName, MyIni);
 		}
 	}
 }

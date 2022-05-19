@@ -1,4 +1,5 @@
-﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Enums;
+﻿using System.Text;
+using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Enums;
 using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
 using Sandbox.ModAPI;
 using VRage.Game;
@@ -14,8 +15,6 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 
 		protected abstract MyUpdateOrder Schedule { get; }
 
-		internal long TickCounter;
-
 		private Log _generalLog;
 
 		private bool _superEarlySetupComplete;
@@ -29,9 +28,9 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 				case CompType.Both:
 					return false;
 				case CompType.Client:
-					return Settings.IsServer;
+					return References.IsServer;
 				case CompType.Server:
-					return !Settings.IsServer;
+					return !References.IsServer;
 				default:
 					return false;
 			}
@@ -76,7 +75,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		{
 			_superEarlySetupComplete = true;
 			_generalLog = new Log(CompName);
-			WriteGeneral("SuperEarlySetup", $"Waking up.  Is Server: {Settings.IsServer}");
+			WriteGeneral("SuperEarlySetup", $"Waking up.  Is Server: {References.IsServer}");
 		}
 
 		/// <summary>
@@ -86,6 +85,17 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		{
 			if (BlockUpdates()) return;
 			base.BeforeStart();
+			BasicInformationDump();
+		}
+
+        private void BasicInformationDump()
+        {
+            var sb = new StringBuilder();
+            Reporting.GameSettings.Report(sb);
+            Reporting.InstalledMods.Report(sb);
+            Reporting.ExistingFactions.Report(sb);
+            Reporting.StoredIdentities.Report(sb);
+			WriteGeneral(sb.ToString());
 		}
 
 		/// <summary>
@@ -112,37 +122,10 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 			if (BlockUpdates()) return;
 			base.UpdateBeforeSimulation();
 			if (!_lateSetupComplete) LateSetup();
-			RunBeforeSimUpdate();
+            UpdateBeforeSim();
 		}
 
-		private void RunBeforeSimUpdate()
-		{
-			TickCounter++;
-			BeforeSimUpdate();
-			if (TickCounter % 2 == 0) BeforeSimUpdate2Ticks();
-			if (TickCounter % 10 == 0) BeforeSimUpdate5Ticks();
-			if (TickCounter % 20 == 0) BeforeSimUpdate10Ticks();
-			if (TickCounter % (Settings.TicksPerSecond / 2) == 0) BeforeSimUpdateHalfSecond();
-			if (TickCounter % Settings.TicksPerSecond == 0) BeforeSimUpdate1Second();
-			if (TickCounter % (Settings.TicksPerSecond * 30) == 0) BeforeSimUpdate30Seconds();
-			if (TickCounter % (Settings.TicksPerMinute) == 0) BeforeSimUpdate1Minute();
-		}
-
-		protected virtual void BeforeSimUpdate() { }
-
-		protected virtual void BeforeSimUpdate2Ticks() { }
-
-		protected virtual void BeforeSimUpdate5Ticks() { }
-
-		protected virtual void BeforeSimUpdate10Ticks() { }
-
-		protected virtual void BeforeSimUpdateHalfSecond() { }
-
-		protected virtual void BeforeSimUpdate1Second() { }
-
-		protected virtual void BeforeSimUpdate30Seconds() { }
-
-		protected virtual void BeforeSimUpdate1Minute() { }
+		protected virtual void UpdateBeforeSim() { }
 
 		protected virtual void LateSetup()
 		{
@@ -158,8 +141,11 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		public override void UpdateAfterSimulation()
 		{
 			if (BlockUpdates()) return;
-			base.UpdateAfterSimulation();
-		}
+            base.UpdateAfterSimulation();
+			UpdateAfterSim();
+        }
+
+        protected virtual void UpdateAfterSim() { }
 
 		protected override void UnloadData()
 		{
@@ -173,13 +159,13 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 			WriteGeneral("Unload", $"Retired.");
 			_generalLog?.Close();
 		}
-		
+
 		/// <summary>
 		///  Gets called 60 times a second before all other update methods, regardless of frame rate, game pause or MyUpdateOrder.
 		/// </summary>
 		public override void HandleInput()
 		{
-
+			base.HandleInput();
 		}
 
 		/// <summary>
@@ -188,7 +174,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		/// </summary>
 		public override void Simulate()
 		{
-
+			base.Simulate();
 		}
 
 		/// <summary>
@@ -197,7 +183,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		/// </summary>
 		public override void Draw()
 		{
-
+			base.Draw();
 		}
 
 		/// <summary>
@@ -205,10 +191,10 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		/// </summary>
 		public override void UpdatingStopped()
 		{
-
+			base.UpdatingStopped();
 		}
 
-		
+
 		public void WriteException(string caller, string message)
 		{
 			_generalLog?.WriteException($"{CompName}: {caller}", message);
