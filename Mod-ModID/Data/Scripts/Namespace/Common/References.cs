@@ -1,14 +1,14 @@
 ﻿using System;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common
+namespace Thraxus.Common
 {
 	public static class References
 	{   // These settings should be used by the mod directly, and not changeable by a user.  They are considered "reference only"
 
-		//public const string ChatCommandPrefix = "chatCommand";
+		public const string ChatCommandPrefix = "chatCommand";
 		//public const string ExceptionLogName = "Exception";
-		//public const ushort NetworkId = 16759;
+		public const ushort NetworkId = 16759;
 
 		#region Reference Values
 

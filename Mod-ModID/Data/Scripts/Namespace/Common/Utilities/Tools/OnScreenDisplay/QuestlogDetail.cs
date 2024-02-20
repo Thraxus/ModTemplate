@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.OnScreenDisplay
+namespace Thraxus.Common.Utilities.Tools.OnScreenDisplay
 {
 	public class QuestLogDetail
 	{

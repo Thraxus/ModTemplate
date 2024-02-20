@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using Sandbox.ModAPI;
+using VRage;
+using VRage.Utils;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Logging
+namespace Thraxus.Common.Utilities.Tools.Logging
 {
 	public class Log
 	{
@@ -22,7 +24,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Lo
 			Init();
 		}
 
-		private void Init()
+        private void Init()
 		{
 			if (TextWriter != null) return;
 			TextWriter = MyAPIGateway.Utilities.WriteFileInLocalStorage(LogName, typeof(Log));
@@ -31,7 +33,8 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Lo
 		public void Close()
 		{
 			TextWriter?.Flush();
-			TextWriter?.Close();
+            TextWriter?.Dispose();
+            TextWriter?.Close();
 			TextWriter = null;
 		}
 
@@ -40,25 +43,33 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Lo
 			BuildLogLine(caller, message);
 		}
 
-		public void WriteException(string caller = "", string message = "")
-		{
-			BuildLogLine(caller, "Exception!\n\n" + message);
-		}
-
-		private readonly object _lockObject = new object();
+        private readonly FastResourceLock _lockObject = new FastResourceLock();
+        //private readonly object _lockObject = new object();
 
 		private void BuildLogLine(string caller, string message)
 		{
-			lock (_lockObject)
-			{
-				WriteLine($"{TimeStamp}{Indent}{caller}{Indent}{message}");
-			}
+            using (_lockObject.AcquireExclusiveUsing())
+            {
+                var newMessage = $"{TimeStamp}{Indent}{caller}{Indent}{message}";
+                WriteLine(newMessage);
+                MyLog.Default.WriteLineAndConsole(newMessage);
+            }
+			//lock ()
+            //{
+            //    var newMessage = $"{TimeStamp}{Indent}{caller}{Indent}{message}";
+            //    WriteLine(newMessage);
+            //    MyLog.Default.WriteLineAndConsole(newMessage);
+            //    //MyAPIGateway.Utilities.InvokeOnGameThread(() =>
+            //    //{
+
+            //    //});
+            //}
 		}
 
 		private void WriteLine(string line)
 		{
-			TextWriter?.WriteLine(line);
-			TextWriter?.Flush();
+            TextWriter?.WriteLine(line);
+            TextWriter?.Flush();
 		}
 	}
 }

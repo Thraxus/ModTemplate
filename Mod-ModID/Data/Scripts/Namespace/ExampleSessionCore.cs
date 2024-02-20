@@ -1,11 +1,11 @@
-﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Models;
-using Sandbox.ModAPI;
+﻿using Sandbox.ModAPI;
+using Thraxus.Common.BaseClasses;
+using Thraxus.Common.Enums;
+using Thraxus.Models;
 using VRage.Game;
 using VRage.Game.Components;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace
+namespace Thraxus
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation, priority: int.MinValue + 1)]
 	internal class ExampleSessionCore : BaseSessionComp

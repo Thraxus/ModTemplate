@@ -1,4 +1,4 @@
-﻿namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Settings.MyCustomIni
+﻿namespace Thraxus.Settings.MyCustomIni
 {
 	public static class ConfigConstants
 	{

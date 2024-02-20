@@ -1,6 +1,6 @@
-﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses;
+﻿using Thraxus.Common.BaseClasses;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Models
+namespace Thraxus.Models
 {
 	public class ExampleModelWithEventLog : BaseLoggingClass
 	{

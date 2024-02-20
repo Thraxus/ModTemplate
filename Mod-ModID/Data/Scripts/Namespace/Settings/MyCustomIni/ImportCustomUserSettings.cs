@@ -1,8 +1,8 @@
-﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.FileHandlers;
+﻿using Thraxus.Common.BaseClasses;
+using Thraxus.Common.Utilities.FileHandlers;
 using VRage.Game.ModAPI.Ingame.Utilities;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Settings.MyCustomIni
+namespace Thraxus.Settings.MyCustomIni
 {
 	public class ImportCustomUserSettings : BaseLoggingClass
 	{

@@ -1,11 +1,11 @@
 ﻿using System.Text;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Enums;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Logging;
 using Sandbox.ModAPI;
+using Thraxus.Common.Enums;
+using Thraxus.Common.Utilities.Tools.Logging;
 using VRage.Game;
 using VRage.Game.Components;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
+namespace Thraxus.Common.BaseClasses
 {
 	public abstract class BaseSessionComp : MySessionComponentBase
 	{
@@ -158,7 +158,8 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 			if (BlockUpdates()) return;
 			WriteGeneral("Unload", $"Retired.");
 			_generalLog?.Close();
-		}
+            _generalLog = null;
+        }
 
 		/// <summary>
 		///  Gets called 60 times a second before all other update methods, regardless of frame rate, game pause or MyUpdateOrder.
@@ -193,13 +194,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 		{
 			base.UpdatingStopped();
 		}
-
-
-		public void WriteException(string caller, string message)
-		{
-			_generalLog?.WriteException($"{CompName}: {caller}", message);
-		}
-
+		
 		public void WriteGeneral(string caller = "", string message = "")
 		{
 			_generalLog?.WriteGeneral($"{CompName}: {caller}", message);

@@ -1,26 +1,51 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using Thraxus.Common.Interfaces;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Generics
+namespace Thraxus.Common.Generics
 {
-    internal class ObjectPool<T>
+    internal class ObjectPool<T> where T : IReset, new()
     {
-        private readonly ConcurrentBag<T> _objects;
+        private readonly ConcurrentStack<T> _objects = new ConcurrentStack<T>();
         private readonly Func<T> _objectGenerator;
+
+        public ObjectPool() { }
 
         public ObjectPool(Func<T> objectGenerator)
         {
             _objectGenerator = objectGenerator;
-            _objects = new ConcurrentBag<T>();
         }
+
+        public int Count() => _objects.Count;
+        public long TotalObjectsServed;
+        public long MaxNewObjects;
 
         public T Get()
         {
             T item;
-            return _objects.TryTake(out item) ? item : _objectGenerator();
+            TotalObjectsServed++;
+            if (_objects.TryPop(out item)) return item;
+            MaxNewObjects++;
+            return _objectGenerator == null ? new T() : _objectGenerator();
         }
 
-        public void Return(T item) => _objects.Add(item);
+        public void Return(T item)
+        {
+            if (item == null) return;
+            if(!item.IsReset)
+                item.Reset();
+            _objects.Push(item);
+        }
+
+        public void Clear()
+        {
+            _objects.Clear();
+        }
+
+        public override string ToString()
+        {
+            return $"PoolType: [{typeof(T).Name}] Total Served: [{TotalObjectsServed:D4}] Max Created: [{MaxNewObjects:D4}] Current Pooled: [{Count():D4}]";
+        }
     }
 }
 

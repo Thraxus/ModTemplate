@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Interfaces
+namespace Thraxus.Common.Interfaces
 {
-    public interface ILog
+    public interface ILog : IClose
     {
         event Action<string, string> OnWriteToLog;
         void WriteGeneral(string caller, string message);

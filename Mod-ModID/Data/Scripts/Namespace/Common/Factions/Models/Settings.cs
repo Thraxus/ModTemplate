@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Factions.DataTypes.Enums;
+using Thraxus.Common.Factions.DataTypes.Enums;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Factions.Models
+namespace Thraxus.Common.Factions.Models
 {
 	public static class Settings
 	{

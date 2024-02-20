@@ -5,7 +5,7 @@ using Sandbox.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Statics
+namespace Thraxus.Common.Utilities.Statics
 {
 	public static class ThrusterCalculations
 	{
@@ -44,7 +44,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Statics
 
 		public static float CalculatedCurrentPower(MyThrust thruster)
 		{
-			return (((IMyThrust)thruster).CurrentThrust / ((IMyThrust)thruster).MaxThrust) * thruster.MaxPowerConsumption;
+			return ((IMyThrust)thruster).CurrentThrust / ((IMyThrust)thruster).MaxThrust * thruster.MaxPowerConsumption;
 		}
 
 		public static float CalculatedThrustScalar(MyThrust thruster, bool inAtmosphere)

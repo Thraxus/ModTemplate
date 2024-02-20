@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Factions.DataTypes.Enums;
 using Sandbox.Definitions;
 using Sandbox.ModAPI;
+using Thraxus.Common.Factions.DataTypes.Enums;
 using VRage.Game.ModAPI;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Factions.Models
+namespace Thraxus.Common.Factions.Models
 {
 	public static class FactionDictionaries
 	{

@@ -1,4 +1,4 @@
-﻿namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.DataTypes
+﻿namespace Thraxus.DataTypes
 {
 	public class ClassExample
 	{

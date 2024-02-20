@@ -7,7 +7,7 @@
     <ProjectGuid>{8949F40A-A35F-4048-9D29-06BA49399F38}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ModTemplate</RootNamespace>
+    <RootNamespace>Thraxus</RootNamespace>
     <AssemblyName>ModTemplate</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -168,8 +168,15 @@
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Factions\Models\Settings.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Generics\ActionQueue.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Generics\ObjectPool.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\IActionQueue.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\IClose.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\ICommon.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\IHaveEvents.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\IInit.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\ILog.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\IReset.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\IResetWithEvent.cs" />
+    <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Interfaces\IUpdate.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\BufferedBinaryReader.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\Models\FastQueue.cs" />
     <Compile Include="Mod-ModID\Data\Scripts\Namespace\Common\References.cs" />

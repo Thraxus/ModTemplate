@@ -1,8 +1,8 @@
-﻿using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Networking.Messages;
-using ProtoBuf;
+﻿using ProtoBuf;
 using Sandbox.ModAPI;
+using Thraxus.Common.Utilities.Tools.Networking.Messages;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools.Networking
+namespace Thraxus.Common.Utilities.Tools.Networking
 {
 	[ProtoInclude(10, typeof(ExampleMessage))]
 	[ProtoContract]

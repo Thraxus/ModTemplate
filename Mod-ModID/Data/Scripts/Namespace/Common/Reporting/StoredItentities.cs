@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Extensions;
 using Sandbox.ModAPI;
+using Thraxus.Common.Extensions;
 using VRage.Game.ModAPI;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Reporting
+namespace Thraxus.Common.Reporting
 {
     public static class StoredIdentities
     {

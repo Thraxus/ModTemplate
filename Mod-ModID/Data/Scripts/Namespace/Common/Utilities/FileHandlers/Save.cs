@@ -2,7 +2,7 @@
 using System.IO;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.FileHandlers
+namespace Thraxus.Common.Utilities.FileHandlers
 {
 	public static class Save
 	{

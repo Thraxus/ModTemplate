@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Tools
+namespace Thraxus.Common.Utilities.Tools
 {
 	/// <inheritdoc cref="Profiler" />
 	/// <summary>

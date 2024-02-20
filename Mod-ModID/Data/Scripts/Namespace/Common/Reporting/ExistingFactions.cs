@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Reporting
+namespace Thraxus.Common.Reporting
 {
     public static class ExistingFactions
     {

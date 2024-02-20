@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Generics
+namespace Thraxus.Common.Generics
 {
     public class ActionQueue
     {
@@ -14,17 +14,24 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Generics
                 _actionQueue.Enqueue(() => Add(--delay, action));
                 return;
             }
-            action?.Invoke();
+            try
+            {
+                action?.Invoke();
+            }
+            catch
+            {
+                // ignored - i don't want the action to crash the game if the origin or related objects are no longer available
+            }
         }
 
-        public void Execute()
+        public void Execute(int iterationMax = 500)
         {
-            ProcessQueue();
+            ProcessQueue(iterationMax);
         }
 
-        private void ProcessQueue()
+        private void ProcessQueue(int iterationMax)
         {
-            int queueCount = _actionQueue.Count;
+            int queueCount = _actionQueue.Count > iterationMax ? iterationMax : _actionQueue.Count;
             while (queueCount-- > 0)
             {
                 _actionQueue.Dequeue()?.Invoke();

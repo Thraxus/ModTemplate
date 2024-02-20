@@ -1,4 +1,4 @@
-﻿namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.DataTypes.Enums
+﻿namespace Thraxus.DataTypes.Enums
 {
 	public enum ExampleEnum
 	{

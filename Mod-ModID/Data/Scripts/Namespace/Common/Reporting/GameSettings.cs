@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Sandbox.ModAPI;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Reporting
+namespace Thraxus.Common.Reporting
 {
 	public static class GameSettings
 	{

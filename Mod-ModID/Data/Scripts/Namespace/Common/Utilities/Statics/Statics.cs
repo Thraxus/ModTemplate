@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Enums;
-using Sandbox.Game;
 using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
 using Sandbox.ModAPI.Interfaces;
 using Sandbox.ModAPI.Weapons;
 using SpaceEngineers.Game.ModAPI;
+using Thraxus.Common.Enums;
 using VRage.Game;
 using VRage.Game.Entity;
 using VRage.Game.ModAPI;
@@ -18,7 +17,7 @@ using IMyCubeGrid = VRage.Game.ModAPI.IMyCubeGrid;
 using IMyEntity = VRage.ModAPI.IMyEntity;
 using IMyInventory = VRage.Game.ModAPI.IMyInventory;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Statics
+namespace Thraxus.Common.Utilities.Statics
 {
 	public static class Statics
 	{
@@ -94,26 +93,26 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Statics
 			return identityList.FirstOrDefault(x => x.IdentityId == playerId);
 		}
 
-		public static void CreateFakeSmallExplosion(Vector3D position)
-		{
-			MyExplosionInfo explosionInfo = new MyExplosionInfo()
-			{
-				PlayerDamage = 0.0f,
-				Damage = 0f,
-				ExplosionType = MyExplosionTypeEnum.WARHEAD_EXPLOSION_02,
-				ExplosionSphere = new BoundingSphereD(position, 0d),
-				LifespanMiliseconds = 0,
-				ParticleScale = 1f,
-				Direction = Vector3.Down,
-				VoxelExplosionCenter = position,
-				ExplosionFlags = MyExplosionFlags.CREATE_PARTICLE_EFFECT,
-				VoxelCutoutScale = 0f,
-				PlaySound = true,
-				ApplyForceAndDamage = false,
-				ObjectsRemoveDelayInMiliseconds = 0
-			};
-			MyExplosions.AddExplosion(ref explosionInfo);
-		}
+		//public static void CreateFakeSmallExplosion(Vector3D position)
+		//{
+		//	MyExplosionInfo explosionInfo = new MyExplosionInfo()
+		//	{
+		//		PlayerDamage = 0.0f,
+		//		Damage = 0f,
+		//		ExplosionType = MyExplosionTypeEnum.WARHEAD_EXPLOSION_02,
+		//		ExplosionSphere = new BoundingSphereD(position, 0d),
+		//		LifespanMiliseconds = 0,
+		//		ParticleScale = 1f,
+		//		Direction = Vector3.Down,
+		//		VoxelExplosionCenter = position,
+		//		ExplosionFlags = MyExplosionFlags.CREATE_PARTICLE_EFFECT,
+		//		VoxelCutoutScale = 0f,
+		//		PlaySound = true,
+		//		ApplyForceAndDamage = false,
+		//		ObjectsRemoveDelayInMiliseconds = 0
+		//	};
+		//	MyExplosions.AddExplosion(ref explosionInfo);
+		//}
 
 		public static int CalculateGridThreat(MyCubeGrid grid)
 		{
@@ -240,7 +239,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Statics
 			Vector3D missileToTarget = Vector3D.Normalize(targetPosition - missilePos);
 			Vector3D relativeVelocity = targetVelocity - missileVelocity;
 			Vector3D parallelVelocity = relativeVelocity.Dot(missileToTarget) * missileToTarget;
-			Vector3D normalVelocity = (relativeVelocity - parallelVelocity);
+			Vector3D normalVelocity = relativeVelocity - parallelVelocity;
 
 			Vector3D normalMissileAcceleration = normalVelocity * compensationFactor;
 
@@ -273,7 +272,7 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Utilities.Statics
 
 		public static bool ValidateFactions(IMyFaction leftFaction, IMyFaction rightFaction)
 		{
-			return (leftFaction == null || rightFaction == null);
+			return leftFaction == null || rightFaction == null;
 		}
 
 		/// <summary>

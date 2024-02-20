@@ -1,14 +1,25 @@
 ﻿using System;
-using ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Interfaces;
+using Thraxus.Common.Interfaces;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
+namespace Thraxus.Common.BaseClasses
 {
 	public abstract class BaseLoggingClass : ICommon
 	{
 		public event Action<string, string> OnWriteToLog;
-		public event Action<ICommon> OnClose;
+		public event Action<IClose> OnClose;
 
-		public bool IsClosed { get; private set; }
+        private string _logPrefix;
+        protected void OverrideLogPrefix(string prefix)
+        {
+            _logPrefix = "[" + prefix + "] ";
+        }
+
+        private void SetLogPrefix()
+        {
+            _logPrefix = "[" + GetType().Name + "] ";
+        }
+
+        public bool IsClosed { get; protected set; }
 
 		public virtual void Close()
 		{
@@ -21,7 +32,9 @@ namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
 
 		public virtual void WriteGeneral(string caller, string message)
 		{
-			OnWriteToLog?.Invoke(caller, message);
+			if(string.IsNullOrEmpty(_logPrefix))
+                SetLogPrefix();
+            OnWriteToLog?.Invoke($"{_logPrefix}{caller}", message);
 		}
-	}
-}
+    }
+} 

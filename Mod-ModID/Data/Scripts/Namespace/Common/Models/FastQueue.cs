@@ -1,5 +1,5 @@
 ﻿
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.Models
+namespace Thraxus.Common.Models
 {
 	public class FastQueue<T>
 	{

@@ -1,7 +1,7 @@
 ﻿using VRage.Game.Components;
 using VRage.ObjectBuilders;
 
-namespace ModTemplate.Mod_ModID.Data.Scripts.Namespace.Common.BaseClasses
+namespace Thraxus.Common.BaseClasses
 {
 	internal abstract class BaseGameLogicComp : MyGameLogicComponent
 	{
